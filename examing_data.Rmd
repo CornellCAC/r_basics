@@ -1,0 +1,278 @@
+---
+title: "Examining data"
+output: html_document
+---
+
+As an example, we will load a data set based on the registration data for this workshop.
+
+Before we begin, use the broom icon in the Environment tab to clear the environment.
+
+# Loading packages
+
+Now, load the required packages. If this was on your own computer, you might have to install packages first using
+
+    install.packages("tidyverse")
+    install.packages("ggtext")
+
+```{r message=FALSE, warning=FALSE, include=FALSE, results='hide'}
+require(ggplot2)   #like library()
+require(dplyr)
+require(lubridate)
+#require(ggExtra)
+require(skimr)
+```
+
+# Loading data
+
+The data is in comma separated format, so the default settings of `read.csv` work well:
+
+```{r}
+df = read.csv("registration_times.csv")
+```
+
+There is no output but you can see the data has loaded in the Environment tab.
+
+We can get basic information about the data using functions:
+
+```{r}
+names(df)
+dim(df)
+```
+
+Where did that period come from? R does not like spaces in variable names, so spaces become periods when you import files. (See raw data in viewer). `Registration Time` becomes `Registration.Time`
+
+We might also want to view a summary and first few lines of the file.
+
+```{r paged.print=FALSE}
+summary(df)  # also see Env tab
+
+writeLines("") # this creates a line return in cell output below
+
+head(df)
+```
+
+Another nice summary from the `skimr` package:
+
+```{r eval=FALSE, include=FALSE, paged.print=FALSE}
+skimr::skim(df)
+```
+
+### Check the data types
+
+Sometimes, R is able to guess the data types but is does not always guess correctly. The Registration.Time column should represent a date and time but R did not auto-convert it. We should convert to a datetime. The organization name came in as a string, but we would prefer to treat that as a factor.
+
+The `ymd_hms()` function from the `lubridate` package is a convenient choice. For example:
+
+```{r}
+ymd_hms("2022-10-19 13:43:15")
+```
+
+Note: Many functions work on entire data columns (vectors)
+
+```{r}
+head(ymd_hms(df$Registration.Time))
+```
+
+Lets update those columns and check the summary again:
+
+```{r paged.print=FALSE}
+df$Registration.Time = ymd_hms(df$Registration.Time)
+df$org = factor(df$org, levels=c('wcm', 'cu', 'other'))
+
+skim(df)
+#summary(df)
+```
+
+# ggplot2 & dplyr
+
+Hadley Wickham, currently working at Posit, the company that develops RStudio, produced a collection of add-on packages for R that address major shortcomings in the R experience and make R more pleasant to use. Collectively, this set of packages is known as the *tidyverse* and it includes the well known *ggplot2* and *dplyr* packages and a host of smaller utility functions.
+
+Wickham has a vision for how R can enable data analysis by using a common *grammar* to describe how to visualize or analyze data. When you use this grammar to produce results, you can focus on what you want the analysis to do and less on how to accomplish it. When you use this grammar of graphics or grammar of data analysis, the code that produces your results describes the steps succinctly.
+
+RStudio PBC publishes documentation, tutorials and training, including these helpful cheatsheets <https://www.rstudio.com/resources/cheatsheets/>.
+
+## "pipe" operator: `%>%`
+
+The tidyverse uses an operator to chain function calls in a way that is easy for humans to read.
+
+Without the pipe operator, your code might look like this:
+
+    sorted_df = arrange(df, Registration.Time)
+    sorted_df_with_total = mutate(sorted_df, cumtotal=row_number(Registration.Time))
+    plot_df = filter(sorted_df_with_total, Registration.Time > ymd_hm("2022-10-18 13:00"))
+
+Even worse, you might be tempted to nest the functions:
+
+    plot_df = filter(mutate(arrange(df, Registration.Time), cumtotal=row_number(Registration.Time)), Registration.Time > ymd_hm("2022-10-18 13:00"))
+
+With the pipe operator, you can express the same steps as a sequence of operations without creating several intermediate variable names. Arranged as a sequence, we can see that we sort the data.frame, add a column to reflect the total number of registrants, and then filter the data to include cases after a certain date.
+
+I prefer the wrap the steps in parenthesis and start each line with the `%>%` operator, so I can comment out individual lines. It is far more common to omit the parenthesis and end each line with a `%>%`.
+
+```{r}
+plot_df = (
+  df 
+  %>% arrange(Registration.Time) 
+  %>% mutate(cumtotal = row_number(Registration.Time))
+  %>% filter(Registration.Time >= ymd_hm("2022-10-18 13:00"))
+)
+
+plot_df %>% head  #same as `head(plot_df)`
+```
+
+# Plotting the data
+
+Suppose we want to examine how registration changed over time. We can plot a histogram of the number of registrants in each interval.
+
+ggplot2 uses a similar system of composing plots by applying a sequence of steps but it uses the `+` operator to combine steps.
+
+Note: see <https://ggplot2.tidyverse.org/reference/ggsave.html> for writing plots to a file.
+
+```{r}
+plot_df = (
+  df 
+  %>% arrange(Registration.Time) 
+  %>% filter(Registration.Time >= ymd_hm("2022-10-18 13:00"))
+)
+my_plot = (
+  ggplot(plot_df, aes(x=Registration.Time))
+  #+ geom_histogram(binwidth = 60*60*24) #, color="darkgrey", fill="grey") #600s = 10mins
+  + geom_histogram(binwidth = 60*60*6, color="darkgrey", fill="grey")
+  + geom_freqpoly(binwidth = 60*60) #600 s = 10 minutes
+  + theme_bw()
+  + ggtitle("Registrations for R workshop")
+  + xlab("Time")
+  + ylab("Registration Count") 
+)
+my_plot
+
+```
+
+```{r}
+# dplyr: filtering data, ggplot: coloring by org, 
+plot_df = (
+  df 
+  %>% arrange(Registration.Time) 
+  %>% filter(  #focus on the first 48 hours
+        Registration.Time >= ymd_hm("2022-10-18 13:00")
+        & Registration.Time < ymd_hm("2022-10-20 13:00")
+      )
+)
+(
+  ggplot(plot_df, aes(x=Registration.Time, fill=org))
+  + geom_histogram(binwidth = 60*60*4, position='stack', color='black', show.legend=FALSE)
+  + theme_bw()
+  + xlab("Time")
+  + ylab("Registrations") 
+  + ggtitle("Registrations for R workshop in first 48 hours")
+  #  in aes: fill=org
+  + scale_fill_brewer(palette = "RdYlBu")
+  + facet_wrap(~ org)  
+  # maybe set show.legend=FALSE
+  + theme(axis.text.x = element_text(angle=30, hjust=1)) 
+)
+```
+
+```{r}
+# more dplyr - mutate for cumulative totals
+plot_df = (
+  df 
+  %>% arrange(Registration.Time) 
+  %>% filter(
+      Registration.Time >= ymd_hm("2022-10-18 13:00")
+      #& Registration.Time < ymd_hm("2022-10-20 13:00")
+    )
+  %>% mutate(cumtotal = row_number(Registration.Time))
+  %>% group_by(org) 
+    %>% mutate(cumgrptotal = row_number(Registration.Time))
+  %>% ungroup()
+)
+
+## inspect the data
+plot_df %>% head(n=20)
+```
+
+```{r}
+plot_df = (
+  df 
+  %>% arrange(Registration.Time) 
+  %>% filter(
+      Registration.Time >= ymd_hm("2022-10-18 13:00")
+      #& Registration.Time < ymd_hm("2022-10-20 13:00")
+    )
+  %>% mutate(cumtotal = row_number(Registration.Time))
+  %>% group_by(org) 
+    %>% mutate(cumgrptotal = row_number(Registration.Time))
+  %>% ungroup()
+)
+
+## inspect the data
+(
+  ggplot(plot_df, aes(x=Registration.Time, y=cumtotal))
+  + geom_line() 
+  + theme_bw()
+  + ggtitle("Total Registrations for R workshop")
+  + xlab("Time")
+  + ylab("Total  Registrations")
+  #+ geom_point(aes(color=org), shape="cross")
+  + geom_line(aes(y=cumgrptotal, color=org))
+  + geom_hline(yintercept = 200, linetype="dashed", color='red')
+  + annotate("text", x=ymd_hm("2022-10-18 13:00"), y=200, label="Hypothetical Course Capacity", hjust=0, vjust=-.5)
+)
+
+#see vignette("ggplot2-specs") for linetype options
+```
+
+#### "I like ggplot, but I wish it also did..."
+
+In typical R fashion, many ggplot extensions are available at <https://exts.ggplot2.tidyverse.org/gallery/>.
+
+-   Learn more about ggplot at <https://ggplot2.tidyverse.org/reference/index.html>.
+
+-   Visit <https://r-graph-gallery.com> for a gallery of examples of different kinds of R plots, mostly generated using ggplot2.
+
+# Summarizing with dplyr
+
+See <https://dplyr.tidyverse.org/articles/dplyr.html> for other dplyr verbs. Two important ones we haven't seen yet are `count()` and `summarize()`:
+
+```{r paged.print=FALSE}
+df %>% count(org, sort = TRUE) 
+```
+
+```{r paged.print=FALSE}
+summary_df = (
+  df
+  %>% filter(Registration.Time > ymd_hm("2022-10-18 13:00"))
+  %>% group_by(org) 
+    %>% summarize(mean_reg = mean(Registration.Time) - ymd_hm("2022-10-18 13:00"), n=n()) 
+    %>% arrange(mean_reg)
+)
+print(summary_df)
+```
+
+# Statistical Analysis
+
+With thousands of packages, R probably supports the analysis you need. Identifying the packages is harder:
+
+-   For basic statistical analysis, refer to one of the many books available at <https://cran.r-project.org/other-docs.html>
+
+    -   *An R Companion to Applied Regression* (second edition) by John Fox and Sanford Weisberg
+    -   *R for Data Science*, Hadley Wickam and Garrett Grolemund - <https://r4ds.had.co.nz>
+
+-   For more advanced or subject-specific information:
+
+    -   Search community sites and blogs:
+
+        -   <https://www.r-bloggers.com>
+
+        -   <https://education.rstudio.com/learn/>
+
+        -   google "analyze XYZ in R" or "\<*method*\> in R"\
+
+    -   CRAN Task View organizes packages by topics:\
+        <https://cran.r-project.org/web/views/>
+
+    -   Search for keywords in the package listing at\
+        <https://cran.r-project.org/web/packages/available_packages_by_name.html>
+
+    -   *Advanced R (Programming)*, Hadley Wickam - <https://adv-r.hadley.nz>
