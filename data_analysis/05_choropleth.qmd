@@ -53,6 +53,7 @@ tic()
 plot_df = svi_df #%>% filter(F_TOTAL >= 0)
 gg = (
   ggplot(data=plot_df, aes(fill=RPL_THEMES)) #RPL_THEMES #F_TOTAL
+  # geom_sf()
   + geom_sf(size=.1, color=NA) #color=NA, "darkgrey")
   + theme_bw()
 )

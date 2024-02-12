@@ -142,13 +142,13 @@ plot_df = (
 )
 my_plot = (
   ggplot(plot_df, aes(x=Registration.Time))
-  + geom_histogram(binwidth = 60*60*24) #, color="darkgrey", fill="grey") #600s = 10mins
-  #+ geom_histogram(binwidth = 60*60*6, color="darkgrey", fill="grey")
-  #+ geom_freqpoly(binwidth = 60*60) #600 s = 10 minutes
-  #+ theme_bw()
-  #+ ggtitle("Registrations for R workshop")
-  #+ xlab("Time")
-  #+ ylab("Registration Count") 
+  #+ geom_histogram(binwidth = 60*60*24) #, color="darkgrey", fill="grey") #600s = 10mins
+  + geom_histogram(binwidth = 60*60*6, color="darkgrey", fill="grey")
+  + geom_freqpoly(binwidth = 60*60) #600 s = 10 minutes
+  + theme_bw()
+  + ggtitle("Registrations for R workshop")
+  + xlab("Time")
+  + ylab("Registration Count") 
 )
 my_plot
 
@@ -166,16 +166,16 @@ plot_df = (
 )
 (
   ggplot(plot_df, aes(x=Registration.Time, fill=org)) #, fill=org
-  + geom_histogram(binwidth = 60*60*4, position='stack', color='black', show.legend=TRUE)
+  + geom_histogram(binwidth = 60*60*4, position='stack', color='black', show.legend=FALSE)
   + theme_bw()
   + xlab("Time")
   + ylab("Registrations") 
   + ggtitle("Registrations for R workshop in first 48 hours")
   #  in aes: fill=org
   #+ scale_fill_brewer(palette = "RdYlBu")
-  #+ facet_wrap(~ org)  
+  + facet_wrap(~ org)  
   # maybe set show.legend=FALSE
-  #+ theme(axis.text.x = element_text(angle=30, hjust=1)) 
+  + theme(axis.text.x = element_text(angle=30, hjust=1)) 
 )
 ```
 

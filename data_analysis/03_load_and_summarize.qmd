@@ -8,9 +8,8 @@ editor: visual
 
 Posit (Formerly R Studio Public Benefit Corporation) publishes helpful and extremely detailed cheatsheets: <https://posit.co/resources/cheatsheets/>
 
-1.  **Notice:** Working Directory at top of Console
-2.  **Demo:** Start a new R notebook
-3.  **Demo:** Use Packages tab to install a package (tidyverse, titanic, gmodels)
+1.  **Demo:** Start a new R notebook
+2.  **Demo:** Use Packages tab to install a package (tidyverse, titanic, gmodels)
 
 ```{r}
 #| message: FALSE
@@ -46,8 +45,10 @@ str(n_df)
 ### Output from readr import wizard:
 
 ```{r}
-# This help file explains the tokens available for parsing time
+# This help file explains the tokens available for parsing time 
 ?parse_date_time
+
+# We could learn that correct format for the data is %Y-%m-%d %H:%M:%S
 ```
 
 ```{r}

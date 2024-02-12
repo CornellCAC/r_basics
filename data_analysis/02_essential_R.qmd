@@ -73,6 +73,26 @@ Markdown also supports a hierarchy of headings to organize your document. The **
 
 ------------------------------------------------------------------------
 
+# Skill level
+
+```{r}
+skill_level <- read.csv(
+  "/cloud/project/data_analysis/skill_level.txt",
+)
+skill_level$What.is.your.programming.skill.level.in.R. = factor(
+  skill_level$What.is.your.programming.skill.level.in.R.,
+  levels=c(
+    "None",
+    "I can read a program",
+    "I can modify a program",
+    "I write programs from scratch",
+    "I write complex programs"
+  ), 
+  ordered = TRUE
+)
+summary(skill_level)
+```
+
 # R as a calculator
 
 We saw this content already, in the form of comments in an R script file. The text formatting options in R Notebook make communication more effective and visually interesting.
@@ -111,6 +131,10 @@ Run this chunk by clicking its *Run* button (green right arrowhead ▶️ ) or b
 
 ```{r}
 2 + 2
+```
+
+```{r}
+4+4
 ```
 
 ```{r}
@@ -274,7 +298,7 @@ paste("I", "like", "R")
 
 ```{r}
 this_day = as.Date("2022-05-17")
-yesterday =  as.Date("2022-05-16")
+yesterday =  as.Date("2023-11-29")
 this_day
 yesterday
 this_day < yesterday  #? Was today before yesterday?
