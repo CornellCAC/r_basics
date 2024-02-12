@@ -203,7 +203,7 @@ ftable(surv_class_sex)
   %>% summarize(n = n()) 
   %>% group_by(Pclass, Sex) 
   %>% mutate( Rate = n/sum(n)) 
-  #%>% filter(Survived=='Yes')
+  #%>% filter(Survived=='Yes'). #only keep survival rate
 )
 ```
 
