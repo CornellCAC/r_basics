@@ -3,7 +3,7 @@ title: "Examining data"
 output: html_document
 ---
 
-As an example, we will load a data set based on the registration data for this workshop.
+As an example, we will load a data set based on workshop registration data.
 
 Before we begin, use the broom icon in the Environment tab to clear the environment.
 
@@ -11,8 +11,10 @@ Before we begin, use the broom icon in the Environment tab to clear the environm
 
 Now, load the required packages. If this was on your own computer, you might have to install packages first using
 
-    install.packages("tidyverse")
-    install.packages("ggtext")
+```         
+install.packages("tidyverse")
+install.packages("ggtext")
+```
 
 ```{r message=FALSE, warning=FALSE, include=FALSE, results='hide'}
 require(ggplot2)   #like library()
@@ -97,13 +99,17 @@ The tidyverse uses an operator to chain function calls in a way that is easy for
 
 Without the pipe operator, your code might look like this:
 
-    sorted_df = arrange(df, Registration.Time)
-    sorted_df_with_total = mutate(sorted_df, cumtotal=row_number(Registration.Time))
-    plot_df = filter(sorted_df_with_total, Registration.Time > ymd_hm("2022-10-18 13:00"))
+```         
+sorted_df = arrange(df, Registration.Time)
+sorted_df_with_total = mutate(sorted_df, cumtotal=row_number(Registration.Time))
+plot_df = filter(sorted_df_with_total, Registration.Time > ymd_hm("2022-10-18 13:00"))
+```
 
 Even worse, you might be tempted to nest the functions:
 
-    plot_df = filter(mutate(arrange(df, Registration.Time), cumtotal=row_number(Registration.Time)), Registration.Time > ymd_hm("2022-10-18 13:00"))
+```         
+plot_df = filter(mutate(arrange(df, Registration.Time), cumtotal=row_number(Registration.Time)), Registration.Time > ymd_hm("2022-10-18 13:00"))
+```
 
 With the pipe operator, you can express the same steps as a sequence of operations without creating several intermediate variable names. Arranged as a sequence, we can see that we sort the data.frame, add a column to reflect the total number of registrants, and then filter the data to include cases after a certain date.
 

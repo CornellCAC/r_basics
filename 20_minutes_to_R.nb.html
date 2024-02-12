@@ -1511,7 +1511,7 @@ window.initializeCodeFolding = function(show) {
     $(this).detach().appendTo(div);
 
     // add a show code button right above
-    var showCodeText = $('<span>' + (showThis ? 'Hide' : 'Code') + '</span>');
+    var showCodeText = $('<span>' + (showThis ? 'Hide' : 'Show') + '</span>');
     var showCodeButton = $('<button type="button" class="btn btn-default btn-xs btn-secondary btn-sm code-folding-btn pull-right float-right"></button>');
     showCodeButton.append(showCodeText);
     showCodeButton
@@ -1537,7 +1537,7 @@ window.initializeCodeFolding = function(show) {
     //   * Change text
     //   * add a class for intermediate states styling
     div.on('hide.bs.collapse', function () {
-      showCodeText.text('Code');
+      showCodeText.text('Show');
       showCodeButton.addClass('btn-collapsing');
     });
     div.on('hidden.bs.collapse', function () {
@@ -1682,23 +1682,17 @@ overflow-y: auto;
 border: 1px solid #ddd;
 border-radius: 4px;
 }
-.tabset-dropdown > .nav-tabs > li.active:before {
-content: "";
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+content: "\e259";
 font-family: 'Glyphicons Halflings';
 display: inline-block;
 padding: 10px;
 border-right: 1px solid #ddd;
 }
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
-content: "";
-border: none;
-}
-.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
-content: "";
+content: "\e258";
 font-family: 'Glyphicons Halflings';
-display: inline-block;
-padding: 10px;
-border-right: 1px solid #ddd;
+border: none;
 }
 .tabset-dropdown > .nav-tabs > li.active {
 display: block;
@@ -1797,28 +1791,29 @@ mc^{2}\)</span></li>
 <li>And bibliographies <span class="citation">[@rmarkdown15]</span>.</li>
 </ul>
 <blockquote>
-<pre class="{=}"><code>Markdown provides an easy way to make standard types of formatted text, like
-
-- *italics*
-- **bold**
-- `code`
-- [links](rmarkdown.rstudio.com)
-- etc.
-
-But did you know that you can also use R Markdown&#39;s markdown to make
-
-- LaTeX equations, $E = mc^{2}$
-- And bibliographies [@rmarkdown15].</code></pre>
+<p>``` {=} Markdown provides an easy way to make standard types of
+formatted text, like</p>
+<ul>
+<li><em>italics</em></li>
+<li><strong>bold</strong></li>
+<li><code>code</code></li>
+<li><a href="rmarkdown.rstudio.com">links</a></li>
+<li>etc.</li>
+</ul>
+<p>But did you know that you can also use R Markdown’s markdown to
+make</p>
+<ul>
+<li>LaTeX equations, <span class="math inline">\(E =
+mc^{2}\)</span></li>
+<li>And bibliographies <span class="citation">[@rmarkdown15]</span>.
+```</li>
+</ul>
 </blockquote>
 <p>Markdown also supports a hierarchy of headings to organize your
 document. The <strong>Outline</strong> to the right is generated
 automatically by the headings in the document. <strong>In markdown
 documents, <code>#</code> is for headings, not comments!</strong></p>
-<pre class="{=}"><code># H1 heading (top level header)
-## H2
-### H3
-...
-###### H6 (deepest level header)</code></pre>
+<p><code>{=} # H1 heading (top level header) ## H2 ### H3 ... ###### H6 (deepest level header)</code></p>
 </div>
 </div>
 <div id="r-notebook-gotchas" class="section level2">
@@ -1884,474 +1879,255 @@ arrowhead ▶️ ) or by clicking inside the block and pressing
 (Windows).</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuYyhUUlVFLCBGQUxTRSwgVFJVRSwgRkFMU0UpICYgYyhUUlVFLCBUUlVFLCBGQUxTRSwgRkFMU0UpXG5gYGBcbmBgYCJ9 -->
-<pre class="r"><code>```r
-c(TRUE, FALSE, TRUE, FALSE) &amp; c(TRUE, TRUE, FALSE, FALSE)</code></pre>
-<pre><code>
-&lt;!-- rnb-source-end --&gt;
-
-&lt;!-- rnb-chunk-end --&gt;
-
-
-&lt;!-- rnb-text-begin --&gt;
-
-
-
-&lt;!-- rnb-text-end --&gt;
-
-
-&lt;!-- rnb-chunk-begin --&gt;
-
-
-&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuaWYgKCAoMyA8IDQpICYmICgnYWEnIDwgJ2FiJykgKXtcbiAgcHJpbnQoXFxUcnVlXFwpXG59IGVsc2Uge1xuICBwcmludChcXEZhbHNlXFwpXG59XG5gYGBcbmBgYCJ9 --&gt;
-
-```r
-```r
-if ( (3 &lt; 4) &amp;&amp; (&#39;aa&#39; &lt; &#39;ab&#39;) ){
-  print(\True\)
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuMiArIDJcbmBgYCJ9 -->
+<pre class="r"><code>2 + 2</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDRcbiJ9 -->
+<pre><code>[1] 4</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuMyA+IDQgXG5gYGAifQ== -->
+<pre class="r"><code>3 &gt; 4 </code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIEZBTFNFXG4ifQ== -->
+<pre><code>[1] FALSE</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYyhUUlVFLCBGQUxTRSwgVFJVRSwgRkFMU0UpICYgYyhUUlVFLCBUUlVFLCBGQUxTRSwgRkFMU0UpXG5gYGAifQ== -->
+<pre class="r"><code>c(TRUE, FALSE, TRUE, FALSE) &amp; c(TRUE, TRUE, FALSE, FALSE)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuaWYgKCAoMyA8IDQpICYmICgnYWEnIDwgJ2FiJykgKXtcbiAgcHJpbnQoXCJUcnVlXCIpXG59IGVsc2Uge1xuICBwcmludChcIkZhbHNlXCIpXG59XG5gYGAifQ== -->
+<pre class="r"><code>if ( (3 &lt; 4) &amp;&amp; (&#39;aa&#39; &lt; &#39;ab&#39;) ){
+  print(&quot;True&quot;)
 } else {
-  print(\False\)
+  print(&quot;False&quot;)
 }</code></pre>
-<pre><code>
-&lt;!-- rnb-source-end --&gt;
-
-&lt;!-- rnb-chunk-end --&gt;
-
-
-&lt;!-- rnb-text-begin --&gt;
-
-
-
-&lt;!-- rnb-text-end --&gt;
-
-
-&lt;!-- rnb-chunk-begin --&gt;
-
-
-&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxubG9nKDEwKSAgICAgICAgIyBuYXR1cmFsIGxvZyBvZiAxMFxuYGBgXG5gYGAifQ== --&gt;
-
-```r
-```r
-log(10)        # natural log of 10</code></pre>
-<pre><code>
-&lt;!-- rnb-source-end --&gt;
-
-&lt;!-- rnb-output-begin eyJkYXRhIjoiWzFdIDIuMzAyNTg1XG4ifQ== --&gt;
-</code></pre>
-<p>[1] 2.302585</p>
-<pre><code>
-
-
-&lt;!-- rnb-output-end --&gt;
-
-&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxubG9nKDEwLCAxMCkgICAgIyB3aGF0IGRvIHlvdSBleHBlY3QgdGhpcyBkb2VzP1xuYGBgXG5gYGAifQ== --&gt;
-
-```r
-```r
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p><strong>Console results appear right below the code cells within the
+document.</strong></p>
+<ul>
+<li><strong>No need to keep console open</strong></li>
+</ul>
+</div>
+</div>
+<div id="math-and-stats-functions-constants" class="section level2">
+<h2>Math and Stats functions / constants</h2>
+<ul>
+<li><code>log(x)</code> natural log or in specified base</li>
+<li><code>exp(x)</code> exponential</li>
+<li><code>pi</code> value of pi</li>
+<li><code>mean(x)</code> mean</li>
+<li><code>var(x)</code> variance</li>
+<li><code>sd(x)</code> standard deviation</li>
+<li>… and many more</li>
+</ul>
+<div id="note-about-functions" class="section level4">
+<h4>Note about functions</h4>
+<p><strong>You don’t need to program functions to use R, but you do need
+to call functions!</strong> Applying functions to data is the
+fundamental building block of statistical analysis in R.</p>
+<p>In programming, a function takes input and returns an output. In R,
+the convention for calling a function is to write the function name
+followed by a pair of parenthesis. The function arguments appear with
+the parenthesis:</p>
+<p><code>name(argument)</code></p>
+<p>If the function accepts multiple arguments, separate the arguments
+with a comma:</p>
+<p><code>name(argument1, argument2)</code></p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubG9nKDEwKSAgICAgICAgIyBuYXR1cmFsIGxvZyBvZiAxMFxubG9nKDEwLCAxMCkgICAgIyB3aGF0IGRvIHlvdSBleHBlY3QgdGhpcyBkb2VzP1xuYGBgIn0= -->
+<pre class="r"><code>log(10)        # natural log of 10
 log(10, 10)    # what do you expect this does?</code></pre>
-<pre><code>
-&lt;!-- rnb-source-end --&gt;
-
-&lt;!-- rnb-output-begin eyJkYXRhIjoiWzFdIDFcbiJ9 --&gt;
-</code></pre>
-<p>[1] 1</p>
-<pre><code>
-
-
-&lt;!-- rnb-output-end --&gt;
-
-&lt;!-- rnb-chunk-end --&gt;
-
-
-&lt;!-- rnb-text-begin --&gt;
-
-
-
-&lt;!-- rnb-text-end --&gt;
-
-
-&lt;!-- rnb-chunk-begin --&gt;
-
-
-&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuP2xvZyAgICAgICAgICAgIyBsZXRzIGNoZWNrIHRoZSBkb2NzIChjbGljayB0aGUgaGVscCB0YWIpXG5gYGBcbmBgYCJ9 --&gt;
-
-```r
-```r
-?log           # lets check the docs (click the help tab)</code></pre>
-<pre><code>
-&lt;!-- rnb-source-end --&gt;
-
-&lt;!-- rnb-chunk-end --&gt;
-
-
-&lt;!-- rnb-text-begin --&gt;
-
-
-**Console results appear right below the code cells within the document.**
-
--   **No need to keep console open**
-
-## Math and Stats functions / constants
-
--   `log(x)` natural log or in specified base
--   `exp(x)` exponential
--   `pi` value of pi
--   `mean(x)` mean
--   `var(x)` variance
--   `sd(x)` standard deviation
--   ... and many more
-
-#### Note about functions
-
-**You don&#39;t need to program functions to use R, but you do need to call functions!** Applying functions to data is the fundamental building block of statistical analysis in R.
-
-In programming, a function takes input and returns an output. In R, the convention for calling a function is to write the function name followed by a pair of parenthesis. The function arguments appear with the parenthesis:
-
-`name(argument)`
-
-If the function accepts multiple arguments, separate the arguments with a comma:
-
-`name(argument1, argument2)`
-
-
-&lt;!-- rnb-text-end --&gt;
-
-
-&lt;!-- rnb-chunk-begin --&gt;
-
-
-&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxubG9nKDEwLCBiYXNlPTEwKSAgICAjIHVzaW5nIHRoZSBuYW1lZCBhcmd1bWVudHMgbWFrZXMgdGhlIG1lYW5pbmcgY2xlYXIuXG5gYGBcbmBgYCJ9 --&gt;
-
-```r
-```r
-log(10, base=10)    # using the named arguments makes the meaning clear.</code></pre>
-<pre><code>
-&lt;!-- rnb-source-end --&gt;
-
-&lt;!-- rnb-output-begin eyJkYXRhIjoiWzFdIDFcbiJ9 --&gt;
-</code></pre>
-<p>[1] 1</p>
-<pre><code>
-
-
-&lt;!-- rnb-output-end --&gt;
-
-&lt;!-- rnb-chunk-end --&gt;
-
-
-&lt;!-- rnb-text-begin --&gt;
-
-
-
-&lt;!-- rnb-text-end --&gt;
-
-
-&lt;!-- rnb-chunk-begin --&gt;
-
-
-&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxud2lkdGggPSAyMCAgICAgIyBkb2VzIG5vdCBwcmludCBhbnl0aGluZyAodHJ5IGxzKCkgb3Igb2JqZWN0cygpKVxuYGBgXG5gYGAifQ== --&gt;
-
-```r
-```r
-width = 20     # does not print anything (try ls() or objects())</code></pre>
-<pre><code>
-&lt;!-- rnb-source-end --&gt;
-
-&lt;!-- rnb-chunk-end --&gt;
-
-
-&lt;!-- rnb-text-begin --&gt;
-
-
-Some functions use named arguments. Refer the to documentation for the function to learn the argument names. Use the names whenever you can to make the meaning of your code more clear. Inside a function call, you should use the `=` sign to attach a value to an argument name.
-
-
-&lt;!-- rnb-text-end --&gt;
-
-
-&lt;!-- rnb-chunk-begin --&gt;
-
-
-&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxud2lkdGggICAgICAgICAgIyBidXQgdmFyaWFibGUgd2FzIGNyZWF0ZWQgKHNlZSBFbnZpcm9ubWVudCB0YWIpXG5gYGBcbmBgYCJ9 --&gt;
-
-```r
-```r
-width          # but variable was created (see Environment tab)</code></pre>
-<pre><code>
-&lt;!-- rnb-source-end --&gt;
-
-&lt;!-- rnb-output-begin eyJkYXRhIjoiWzFdIDIwXG4ifQ== --&gt;
-</code></pre>
-<p>[1] 20</p>
-<pre><code>
-
-
-&lt;!-- rnb-output-end --&gt;
-
-&lt;!-- rnb-chunk-end --&gt;
-
-
-&lt;!-- rnb-text-begin --&gt;
-
-
-------------------------------------------------------------------------
-
-# Variables
-
-Variables are used to store and use values.
-
-You choose the variable name, but be careful:
-
--   If the variable name is the same as a function you what to use, your code may be hard to read. R will mostly be able to keep track of variable vs function names.
-
--   There are a small number of reserved names that cannot be used as variable names. See `?base::reserved`
-
-Suppose we need to store the measurement for an object&#39;s width. We might create a variable to hold the value. **We can use a single `=` or a `&lt;-` to assign a value to variable name.** The `&lt;-` for assignment comes from the APL language which used a special keyboard for symbols. These keyboards haven&#39;t been made since the 80&#39;s but the convention lives on. You will see both styles of assignment, sometimes within a single document!
-
-
-&lt;!-- rnb-text-end --&gt;
-
-
-&lt;!-- rnb-chunk-begin --&gt;
-
-
-&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuaGVpZ2h0ID0gNSAqIDlcbmBgYFxuYGBgIn0= --&gt;
-
-```r
-```r
-height = 5 * 9</code></pre>
-<pre><code>
-&lt;!-- rnb-source-end --&gt;
-
-&lt;!-- rnb-chunk-end --&gt;
-
-
-&lt;!-- rnb-text-begin --&gt;
-
-
-In contrast to other statistical software, R does not print results after running commands. Instead, R creates objects in memory for you to use. This can feel like R is not *doing* anything, unless you know where to look. Click the Environment tab (probably in the upper right pane) and note how the environment changes as you execute each command.
-
-
-&lt;!-- rnb-text-end --&gt;
-
-
-&lt;!-- rnb-chunk-begin --&gt;
-
-
-&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxud2lkdGggKiBoZWlnaHQgIyBzYW1lIGFzIDIwICogNDVcbmBgYFxuYGBgIn0= --&gt;
-
-```r
-```r
-width * height # same as 20 * 45</code></pre>
-<pre><code>
-&lt;!-- rnb-source-end --&gt;
-
-&lt;!-- rnb-output-begin eyJkYXRhIjoiWzFdIDkwMFxuIn0= --&gt;
-</code></pre>
-<p>[1] 900</p>
-<pre><code>
-
-
-&lt;!-- rnb-output-end --&gt;
-
-&lt;!-- rnb-chunk-end --&gt;
-
-
-&lt;!-- rnb-text-begin --&gt;
-
-
-Variables can hold the results of a computation as well.
-
-
-&lt;!-- rnb-text-end --&gt;
-
-
-&lt;!-- rnb-chunk-begin --&gt;
-
-
-&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxubHMoKSAjIHNob3cgdGhlIG9iamVjdHMgaW4gbWVtb3J5XG53aWRpdGggPC0gMTAgI29vcHMsIG1pc3NwZWxsZWQgXFx3aWR0aFxcIFxubHMoKVxuYGBgXG5gYGAifQ== --&gt;
-
-```r
-```r
-ls() # show the objects in memory
-widith &lt;- 10 #oops, misspelled \width\ 
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuP2xvZyAgICAgICAgICAgIyBsZXRzIGNoZWNrIHRoZSBkb2NzIChjbGljayB0aGUgaGVscCB0YWIpXG5gYGAifQ== -->
+<pre class="r"><code>?log           # lets check the docs (click the help tab)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>Some functions use named arguments. Refer the to documentation for
+the function to learn the argument names. Use the names whenever you can
+to make the meaning of your code more clear. Inside a function call, you
+should use the <code>=</code> sign to attach a value to an argument
+name.</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubG9nKDEwLCBiYXNlPTEwKSAgICAjIHVzaW5nIHRoZSBuYW1lZCBhcmd1bWVudHMgbWFrZXMgdGhlIG1lYW5pbmcgY2xlYXIuXG5gYGAifQ== -->
+<pre class="r"><code>log(10, base=10)    # using the named arguments makes the meaning clear.</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<hr />
+</div>
+</div>
+</div>
+<div id="variables" class="section level1">
+<h1>Variables</h1>
+<p>Variables are used to store and use values.</p>
+<p>You choose the variable name, but be careful:</p>
+<ul>
+<li><p>If the variable name is the same as a function you what to use,
+your code may be hard to read. R will mostly be able to keep track of
+variable vs function names.</p></li>
+<li><p>There are a small number of reserved names that cannot be used as
+variable names. See <code>?base::reserved</code></p></li>
+</ul>
+<p>Suppose we need to store the measurement for an object’s width. We
+might create a variable to hold the value. <strong>We can use a single
+<code>=</code> or a <code>&lt;-</code> to assign a value to variable
+name.</strong> The <code>&lt;-</code> for assignment comes from the APL
+language which used a special keyboard for symbols. These keyboards
+haven’t been made since the 80’s but the convention lives on. You will
+see both styles of assignment, sometimes within a single document!</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxud2lkdGggPSAyMCAgICAgIyBkb2VzIG5vdCBwcmludCBhbnl0aGluZyAodHJ5IGxzKCkgb3Igb2JqZWN0cygpKVxuYGBgIn0= -->
+<pre class="r"><code>width = 20     # does not print anything (try ls() or objects())</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>In contrast to other statistical software, R does not print results
+after running commands. Instead, R creates objects in memory for you to
+use. This can feel like R is not <em>doing</em> anything, unless you
+know where to look. Click the Environment tab (probably in the upper
+right pane) and note how the environment changes as you execute each
+command.</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxud2lkdGggICAgICAgICAgIyBidXQgdmFyaWFibGUgd2FzIGNyZWF0ZWQgKHNlZSBFbnZpcm9ubWVudCB0YWIpXG5gYGAifQ== -->
+<pre class="r"><code>width          # but variable was created (see Environment tab)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>Variables can hold the results of a computation as well.</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuaGVpZ2h0ID0gNSAqIDlcbmBgYCJ9 -->
+<pre class="r"><code>height = 5 * 9</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxud2lkdGggKiBoZWlnaHQgIyBzYW1lIGFzIDIwICogNDVcbmBgYCJ9 -->
+<pre class="r"><code>width * height # same as 20 * 45</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>Suppose we make a mistake:</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubHMoKSAjIHNob3cgdGhlIG9iamVjdHMgaW4gbWVtb3J5XG53aWRpdGggPC0gMTAgI29vcHMsIG1pc3NwZWxsZWQgXCJ3aWR0aFwiIFxubHMoKVxuYGBgIn0= -->
+<pre class="r"><code>ls() # show the objects in memory
+widith &lt;- 10 #oops, misspelled &quot;width&quot; 
 ls()</code></pre>
-<pre><code>
-&lt;!-- rnb-source-end --&gt;
-
-&lt;!-- rnb-chunk-end --&gt;
-
-
-&lt;!-- rnb-text-begin --&gt;
-
-
-
-&lt;!-- rnb-text-end --&gt;
-
-
-&lt;!-- rnb-chunk-begin --&gt;
-
-
-&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxucm0od2lkaXRoKVxubHMoKVxuYGBgXG5gYGAifQ== --&gt;
-
-```r
-```r
-rm(widith)
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>We don’t have to live with it. Objects can be removed using the rm()
+function.</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucm0od2lkaXRoKVxubHMoKVxuYGBgIn0= -->
+<pre class="r"><code>rm(widith)
 ls()</code></pre>
-<pre><code>
-&lt;!-- rnb-source-end --&gt;
-
-&lt;!-- rnb-chunk-end --&gt;
-
-
-&lt;!-- rnb-text-begin --&gt;
-
-
-Suppose we make a mistake:
-
-
-&lt;!-- rnb-text-end --&gt;
-
-
-&lt;!-- rnb-chunk-begin --&gt;
-
-
-&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuNSAqIDIgIyBwZXJmZWN0bHkgc2Vuc2libGVcbmBgYFxuYGBgIn0= --&gt;
-
-```r
-```r
-5 * 2 # perfectly sensible</code></pre>
-<pre><code>
-&lt;!-- rnb-source-end --&gt;
-
-&lt;!-- rnb-chunk-end --&gt;
-
-
-&lt;!-- rnb-text-begin --&gt;
-
-
-We don&#39;t have to live with it. Objects can be removed using the rm() function.
-
-
-&lt;!-- rnb-text-end --&gt;
-
-
-&lt;!-- rnb-chunk-begin --&gt;
-
-
-&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuXFxJIGxpa2UgUlxcICogMiAgIyBub25zZW5zaWNhbFxuYGBgXG5gYGAifQ== --&gt;
-
-```r
-```r
-\I like R\ * 2  # nonsensical</code></pre>
-<pre><code>
-&lt;!-- rnb-source-end --&gt;
-
-&lt;!-- rnb-chunk-end --&gt;
-
-
-&lt;!-- rnb-text-begin --&gt;
-
-
-------------------------------------------------------------------------
-
-# Data types
-
-Data types are a way to model the different kinds of data we encounter every day in our work. Most data used for statistical analysis is probably numeric, but our data also contain information like names, that are **strings** of letters. We might have indicator variables that can be either **true or false**. Some of the string-like data represent special kinds of data, like dates, times or levels of a categorical variable.
-
-It is important to make sure that your data is represented by the correct R data type because data type determines how R can use the values.
-
-**Most common data types**
-
-+--------------+------------------------------------------------------+
-| Type         | Description                                          |
-+=============:+======================================================+
-| numeric      | 3, 5.2, etc                                          |
-+--------------+------------------------------------------------------+
-| Boolean      | TRUE, FALSE                                          |
-+--------------+------------------------------------------------------+
-| character    | (i.e. string) &quot;cat&quot;, &quot;dog&quot;                           |
-+--------------+------------------------------------------------------+
-| factor       | categorical variable -\                              |
-|              | data value is one of a small set of possible values. |
-+--------------+------------------------------------------------------+
-| date[time]   | represents a date or specific date and time.         |
-+--------------+------------------------------------------------------+
-
-    5           # numeric
-    TRUE        # Boolean / Logical 
-
-    &quot;I like R&quot;  # character(s) / string
-    &#39;I like R&#39;  # single or double quotes
-
-Data type determines what you can do with the data:
-
-
-&lt;!-- rnb-text-end --&gt;
-
-
-&lt;!-- rnb-chunk-begin --&gt;
-
-
-&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxucGFzdGUoXFxJXFwsIFxcbGlrZVxcLCBcXFJcXClcblxcYWFcXCA8IFxcYWJcXFxuXFxjY1xcID4gXFxjZFxcXG5gYGBcbmBgYCJ9 --&gt;
-
-```r
-```r
-paste(\I\, \like\, \R\)
-\aa\ &lt; \ab\
-\cc\ &gt; \cd\</code></pre>
-<pre><code>
-&lt;!-- rnb-source-end --&gt;
-
-&lt;!-- rnb-chunk-end --&gt;
-
-
-&lt;!-- rnb-text-begin --&gt;
-
-
-
-&lt;!-- rnb-text-end --&gt;
-
-
-&lt;!-- rnb-chunk-begin --&gt;
-
-
-&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxudGhpc19kYXkgPSBhcy5EYXRlKFxcMjAyMi0wNS0xN1xcKVxueWVzdGVyZGF5ID0gIGFzLkRhdGUoXFwyMDIyLTA1LTE2XFwpXG50aGlzX2RheVxueWVzdGVyZGF5XG50aGlzX2RheSA8IHllc3RlcmRheSAgIz8gV2FzIHRvZGF5IGJlZm9yZSB5ZXN0ZXJkYXk/XG4gICAgICAgICAgICAgICAgICAgICAgIyBXaHkgZGlkIHVzIFxcdGhpc19kYXlcXCBmb3IgdG9kYXk/IChuYW1lc3BhY2UpXG4gICAgICAgICAgICAgICAgICAgICAgIyBXaWxsIGRpc2N1c3MgaW4gcGFpbiBwb2ludHMgc2VjdGlvbnNcbmZvcm1hdChhcy5EYXRlKFxcMjAyMi0wNS0xN1xcKSwgJyVBICVCICVkICVZJykgICNQT1NJWCAgZGF0ZSBmb3JtYXR0aW5nXG5gYGBcbmBgYCJ9 --&gt;
-
-```r
-```r
-this_day = as.Date(\2022-05-17\)
-yesterday =  as.Date(\2022-05-16\)
-this_day
-yesterday
-this_day &lt; yesterday  #? Was today before yesterday?
-                      # Why did us \this_day\ for today? (namespace)
-                      # Will discuss in pain points sections
-format(as.Date(\2022-05-17\), &#39;%A %B %d %Y&#39;)  #POSIX  date formatting</code></pre>
-<pre><code>
-&lt;!-- rnb-source-end --&gt;
-
-&lt;!-- rnb-chunk-end --&gt;
-
-
-&lt;!-- rnb-text-begin --&gt;
-
-
-Python style concat does not work: `&quot;I&quot; + &quot;like&quot; + &quot;R&quot;`
-
-On the other hand, string functions and comparison operators do work with strings.
-
-
-&lt;!-- rnb-text-end --&gt;
-
-
-&lt;!-- rnb-chunk-begin --&gt;
-
-
-&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucGFzdGUoXCJJXCIsIFwibGlrZVwiLCBcIlJcIilcblwiYWFcIiA8IFwiYWJcIlxuXCJjY1wiID4gXCJjZFwiXG5gYGAifQ== --&gt;
-
-```r
-paste(&quot;I&quot;, &quot;like&quot;, &quot;R&quot;)
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<hr />
+</div>
+<div id="data-types" class="section level1">
+<h1>Data types</h1>
+<p>Data types are a way to model the different kinds of data we
+encounter every day in our work. Most data used for statistical analysis
+is probably numeric, but our data also contain information like names,
+that are <strong>strings</strong> of letters. We might have indicator
+variables that can be either <strong>true or false</strong>. Some of the
+string-like data represent special kinds of data, like dates, times or
+levels of a categorical variable.</p>
+<p>It is important to make sure that your data is represented by the
+correct R data type because data type determines how R can use the
+values.</p>
+<p><strong>Most common data types</strong></p>
+<table style="width:94%;">
+<colgroup>
+<col width="18%" />
+<col width="76%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="right">Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">numeric</td>
+<td>3, 5.2, etc</td>
+</tr>
+<tr class="even">
+<td align="right">Boolean</td>
+<td>TRUE, FALSE</td>
+</tr>
+<tr class="odd">
+<td align="right">character</td>
+<td>(i.e. string) “cat”, “dog”</td>
+</tr>
+<tr class="even">
+<td align="right">factor</td>
+<td>categorical variable -<br />
+data value is one of a small set of possible values.</td>
+</tr>
+<tr class="odd">
+<td align="right">date[time]</td>
+<td>represents a date or specific date and time.</td>
+</tr>
+</tbody>
+</table>
+<pre><code>5           # numeric
+TRUE        # Boolean / Logical 
+
+&quot;I like R&quot;  # character(s) / string
+&#39;I like R&#39;  # single or double quotes</code></pre>
+<p>Data type determines what you can do with the data:</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuNSAqIDIgIyBwZXJmZWN0bHkgc2Vuc2libGVcbmBgYCJ9 -->
+<pre class="r"><code>5 * 2 # perfectly sensible</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuXCJJIGxpa2UgUlwiICogMiAgIyBub25zZW5zaWNhbFxuYGBgIn0= -->
+<pre class="r"><code>&quot;I like R&quot; * 2  # nonsensical</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>Python style concat does not work:
+<code>&quot;I&quot; + &quot;like&quot; + &quot;R&quot;</code></p>
+<p>On the other hand, string functions and comparison operators do work
+with strings.</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucGFzdGUoXCJJXCIsIFwibGlrZVwiLCBcIlJcIilcblwiYWFcIiA8IFwiYWJcIlxuXCJjY1wiID4gXCJjZFwiXG5gYGAifQ== -->
+<pre class="r"><code>paste(&quot;I&quot;, &quot;like&quot;, &quot;R&quot;)
 &quot;aa&quot; &lt; &quot;ab&quot;
 &quot;cc&quot; &gt; &quot;cd&quot;</code></pre>
 <!-- rnb-source-end -->
@@ -2359,638 +2135,336 @@ paste(&quot;I&quot;, &quot;like&quot;, &quot;R&quot;)
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxubXlfdmVjWzFdICAgIyB1c2Ugc3F1YXJlIGJyYWNrZXQgdG8gZ2V0IGFuIGl0ZW0gZnJvbSB2ZWN0b3Jcbmxlbmd0aChteV92ZWMpICAgIyBsZW5ndGggaXMgN1xubXlfdmVjWzddXG5teV92ZWNbMTozXSAgIyByYW5nZXMgYXJlIGluY2x1c2l2ZVxuYGBgXG5gYGAifQ== -->
-<pre class="r"><code>```r
-my_vec[1]   # use square bracket to get an item from vector
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxudGhpc19kYXkgPSBhcy5EYXRlKFwiMjAyMi0wNS0xN1wiKVxueWVzdGVyZGF5ID0gIGFzLkRhdGUoXCIyMDIyLTA1LTE2XCIpXG50aGlzX2RheVxueWVzdGVyZGF5XG50aGlzX2RheSA8IHllc3RlcmRheSAgIz8gV2FzIHRvZGF5IGJlZm9yZSB5ZXN0ZXJkYXk/XG4gICAgICAgICAgICAgICAgICAgICAgIyBXaHkgZGlkIHVzIFwidGhpc19kYXlcIiBmb3IgdG9kYXk/IChuYW1lc3BhY2UpXG4gICAgICAgICAgICAgICAgICAgICAgIyBXaWxsIGRpc2N1c3MgaW4gcGFpbiBwb2ludHMgc2VjdGlvbnNcbmZvcm1hdChhcy5EYXRlKFwiMjAyMi0wNS0xN1wiKSwgJyVBICVCICVkICVZJykgICNQT1NJWCAgZGF0ZSBmb3JtYXR0aW5nXG5gYGAifQ== -->
+<pre class="r"><code>this_day = as.Date(&quot;2022-05-17&quot;)
+yesterday =  as.Date(&quot;2022-05-16&quot;)
+this_day
+yesterday
+this_day &lt; yesterday  #? Was today before yesterday?
+                      # Why did us &quot;this_day&quot; for today? (namespace)
+                      # Will discuss in pain points sections
+format(as.Date(&quot;2022-05-17&quot;), &#39;%A %B %d %Y&#39;)  #POSIX  date formatting</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<hr />
+</div>
+<div id="data-containers-objects" class="section level1">
+<h1>Data Containers (Objects)</h1>
+<p>Data values more useful when stored as a collection in a container.
+We don’t want to store the each cell in our data table under a different
+name!</p>
+<p>R has two types of data containers; containers that hold collections
+of same-type values and those that can hold mixed types.</p>
+<p><strong>Single Type Containers</strong></p>
+<ul>
+<li>vector v[i]</li>
+<li>matrix m[i,k]</li>
+<li>array a[i,j,k,…..]</li>
+</ul>
+<p><strong>Multi-type Containers</strong></p>
+<ul>
+<li>Lists</li>
+<li>Data Frames</li>
+</ul>
+<p>You can convert between compatible containers using
+<code>as.*()</code> methods (as.list(), as.data.frame()). For instance,
+you might convert a matrix <code>m</code> to a data.frame using
+<code>as.data.frame(m)</code>.</p>
+<div id="vector" class="section level2">
+<h2>Vector</h2>
+<p>A vector is like a column from a data table. It has one dimension
+(length) and all the elements in the vector are of the same kind.</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>The first element is at index 1. Last element is at
+length(my_vec)</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubXlfdmVjWzFdICAgIyB1c2Ugc3F1YXJlIGJyYWNrZXQgdG8gZ2V0IGFuIGl0ZW0gZnJvbSB2ZWN0b3Jcbmxlbmd0aChteV92ZWMpICAgIyBsZW5ndGggaXMgN1xubXlfdmVjWzddXG5teV92ZWNbMTozXSAgIyByYW5nZXMgYXJlIGluY2x1c2l2ZVxuYGBgIn0= -->
+<pre class="r"><code>my_vec[1]   # use square bracket to get an item from vector
 length(my_vec)   # length is 7
 my_vec[7]
 my_vec[1:3]  # ranges are inclusive</code></pre>
-<pre><code>
-&lt;!-- rnb-source-end --&gt;
-
-&lt;!-- rnb-chunk-end --&gt;
-
-
-&lt;!-- rnb-text-begin --&gt;
-
-
-------------------------------------------------------------------------
-
-# Data Containers (Objects)
-
-Data values more useful when stored as a collection in a container. We don&#39;t want to store the each cell in our data table under a different name!
-
-R has two types of data containers; containers that hold collections of same-type values and those that can hold mixed types.
-
-**Single Type Containers**
-
--   vector v[i]
--   matrix m[i,k]
--   array a[i,j,k,.....]
-
-**Multi-type Containers**
-
--   Lists
--   Data Frames
-
-You can convert between compatible containers using `as.*()` methods (as.list(), as.data.frame()). For instance, you might convert a matrix `m` to a data.frame using `as.data.frame(m)`.
-
-## Vector
-
-A vector is like a column from a data table. It has one dimension (length) and all the elements in the vector are of the same kind.
-
-
-&lt;!-- rnb-text-end --&gt;
-
-
-&lt;!-- rnb-chunk-begin --&gt;
-
-
-
-&lt;!-- rnb-chunk-end --&gt;
-
-
-&lt;!-- rnb-text-begin --&gt;
-
-
-The first element is at index 1. Last element is at length(my_vec)
-
-
-&lt;!-- rnb-text-end --&gt;
-
-
-&lt;!-- rnb-chunk-begin --&gt;
-
-
-&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxubWl4ZWQgPSBjKFxcUlxcLCBUUlVFLCAxMClcbm1vZGUobWl4ZWQpXG5taXhlZCAjIGV2ZXJ5dGhpbmcgaXMgc3RyaW5nIVxuYGBgXG5gYGAifQ== --&gt;
-
-```r
-```r
-mixed = c(\R\, TRUE, 10)
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>Most R operators and functions support vector input</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubXlfdmVjXjJcbm15X3ZlYyArIG15X3ZlY1xubXlfdmVjICogbXlfdmVjICAgIyBwYWlyd2lzZSwgdmVjdG9yIG11bHRpcGxpY2F0aW9uXG5gYGAifQ== -->
+<pre class="r"><code>my_vec^2
+my_vec + my_vec
+my_vec * my_vec   # pairwise, vector multiplication</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p><strong>Caution:</strong> If you ask R to make a vector of mixed
+types, R automatically (and silently) finds a common data type. This
+might not be the type you would have selected.</p>
+<p><em>A string, a Boolean and an integer go into a vector…</em></p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubWl4ZWQgPSBjKFwiUlwiLCBUUlVFLCAxMClcbm1vZGUobWl4ZWQpXG5taXhlZCAjIGV2ZXJ5dGhpbmcgaXMgc3RyaW5nIVxuYGBgIn0= -->
+<pre class="r"><code>mixed = c(&quot;R&quot;, TRUE, 10)
 mode(mixed)
 mixed # everything is string!</code></pre>
-<pre><code>
-&lt;!-- rnb-source-end --&gt;
-
-&lt;!-- rnb-chunk-end --&gt;
-
-
-&lt;!-- rnb-text-begin --&gt;
-
-
-Most R operators and functions support vector input
-
-
-&lt;!-- rnb-text-end --&gt;
-
-
-&lt;!-- rnb-chunk-begin --&gt;
-
-
-&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxubWl4ZWQyID1jKDEsIDIsIDMsIFRSVUUpXG5tb2RlKG1peGVkMilcbm1peGVkMiAjIEJvb2xlYW4gaXMgbm93IGFuIGludCEgIyBhcy5sb2dpY2FsKDEpID09IFRSVUVcbmBgYFxuYGBgIn0= --&gt;
-
-```r
-```r
-mixed2 =c(1, 2, 3, TRUE)
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubWl4ZWQyID1jKDEsIDIsIDMsIFRSVUUpXG5tb2RlKG1peGVkMilcbm1peGVkMiAjIEJvb2xlYW4gaXMgbm93IGFuIGludCEgIyBhcy5sb2dpY2FsKDEpID09IFRSVUVcbmBgYCJ9 -->
+<pre class="r"><code>mixed2 =c(1, 2, 3, TRUE)
 mode(mixed2)
 mixed2 # Boolean is now an int! # as.logical(1) == TRUE</code></pre>
-<pre><code>
-&lt;!-- rnb-source-end --&gt;
-
-&lt;!-- rnb-chunk-end --&gt;
-
-
-&lt;!-- rnb-text-begin --&gt;
-
-
-**Caution:** If you ask R to make a vector of mixed types, R automatically (and silently) finds a common data type. This might not be the type you would have selected.
-
-*A string, a Boolean and an integer go into a vector...*
-
-
-&lt;!-- rnb-text-end --&gt;
-
-
-&lt;!-- rnb-chunk-begin --&gt;
-
-
-&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuP3NlcSAjIFRyeSBSJ3MgaGVscCBmb3IgdGhlIHNlcSBmdW5jdGlvblxuICAgICAjIHNlZSB0aGUgSGVscCB0YWIgb24gdGhlIGJvdHRvbS1yaWdodCBwYW5lbFxuYGBgXG5gYGAifQ== --&gt;
-
-```r
-```r
-?seq # Try R&#39;s help for the seq function
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>R includes many functions to make sequences</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuP3NlcSAjIFRyeSBSJ3MgaGVscCBmb3IgdGhlIHNlcSBmdW5jdGlvblxuICAgICAjIHNlZSB0aGUgSGVscCB0YWIgb24gdGhlIGJvdHRvbS1yaWdodCBwYW5lbFxuYGBgIn0= -->
+<pre class="r"><code>?seq # Try R&#39;s help for the seq function
      # see the Help tab on the bottom-right panel</code></pre>
-<pre><code>
-&lt;!-- rnb-source-end --&gt;
-
-&lt;!-- rnb-chunk-end --&gt;
-
-
-&lt;!-- rnb-text-begin --&gt;
-
-
-
-&lt;!-- rnb-text-end --&gt;
-
-
-&lt;!-- rnb-chunk-begin --&gt;
-
-
-&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuc2VxKGZyb209MSwgdG89MTAsIGJ5PTEpXG4xOjEwXG5teV9zZXEgPSBzZXEoZnJvbT0xLCB0bz0xMCwgYnk9MSlcbmBgYFxuYGBgIn0= --&gt;
-
-```r
-```r
-seq(from=1, to=10, by=1)
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc2VxKGZyb209MSwgdG89MTAsIGJ5PTEpXG4xOjEwXG5teV9zZXEgPSBzZXEoZnJvbT0xLCB0bz0xMCwgYnk9MSlcbmBgYCJ9 -->
+<pre class="r"><code>seq(from=1, to=10, by=1)
 1:10
 my_seq = seq(from=1, to=10, by=1)</code></pre>
-<pre><code>
-&lt;!-- rnb-source-end --&gt;
-
-&lt;!-- rnb-chunk-end --&gt;
-
-
-&lt;!-- rnb-text-begin --&gt;
-
-
-R includes many functions to make sequences
-
-
-&lt;!-- rnb-text-end --&gt;
-
-
-&lt;!-- rnb-chunk-begin --&gt;
-
-
-&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxubXlfc2VxICUlIDIgPT0gMCAgICAgICAgICAgICAgICAjIHdoaWNoIHZhbHVlcyBpbiBteV9zZXEgYXJlIGV2ZW4/XG5teV9ib29sX3ZlYyA9IG15X3NlcSAlJSAyID09IDAgICMgc3RvcmUgdGhlIEJvb2xlYW4gdmVjdG9yXG5gYGBcbmBgYCJ9 --&gt;
-
-```r
-```r
-my_seq %% 2 == 0                # which values in my_seq are even?
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>Vectors of Boolean values are helpful for selecting subsets.<br />
+Boolean vector example: <code>c(TRUE, TRUE, FALSE, TRUE)</code></p>
+<p>We can make a Boolean vector by using a comparison expression and
+another sequence. For instance, we might want to find the even values
+from my_seq above.</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubXlfc2VxICUlIDIgPT0gMCAgICAgICAgICAgICAgICAjIHdoaWNoIHZhbHVlcyBpbiBteV9zZXEgYXJlIGV2ZW4/XG5teV9ib29sX3ZlYyA9IG15X3NlcSAlJSAyID09IDAgICMgc3RvcmUgdGhlIEJvb2xlYW4gdmVjdG9yXG5gYGAifQ== -->
+<pre class="r"><code>my_seq %% 2 == 0                # which values in my_seq are even?
 my_bool_vec = my_seq %% 2 == 0  # store the Boolean vector</code></pre>
-<pre><code>
-&lt;!-- rnb-source-end --&gt;
-
-&lt;!-- rnb-chunk-end --&gt;
-
-
-&lt;!-- rnb-text-begin --&gt;
-
-
-
-&lt;!-- rnb-text-end --&gt;
-
-
-&lt;!-- rnb-chunk-begin --&gt;
-
-
-&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxubXlfc2VxXG5teV9zZXFbbXlfYm9vbF92ZWNdXG5gYGBcbmBgYCJ9 --&gt;
-
-```r
-```r
-my_seq
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>The Boolean vector can be used to subset the original vector:</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubXlfc2VxXG5teV9zZXFbbXlfYm9vbF92ZWNdXG5gYGAifQ== -->
+<pre class="r"><code>my_seq
 my_seq[my_bool_vec]</code></pre>
-<pre><code>
-&lt;!-- rnb-source-end --&gt;
-
-&lt;!-- rnb-chunk-end --&gt;
-
-
-&lt;!-- rnb-text-begin --&gt;
-
-
-Vectors of Boolean values are helpful for selecting subsets.\
-Boolean vector example: `c(TRUE, TRUE, FALSE, TRUE)`
-
-We can make a Boolean vector by using a comparison expression and another sequence. For instance, we might want to find the even values from my_seq above.
-
-
-&lt;!-- rnb-text-end --&gt;
-
-
-&lt;!-- rnb-chunk-begin --&gt;
-
-
-&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxudmFscyA9IDE6OVxudmFsc1xubWF0MSA9IG1hdHJpeCh2YWxzLCBucm93ID0gMywgYnlyb3cgPSBUUlVFKVxubWF0MVxuYGBgXG5gYGAifQ== --&gt;
-
-```r
-```r
-vals = 1:9
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+</div>
+<div id="matrix" class="section level2">
+<h2>Matrix</h2>
+<p>A matrix has two dimensions, <em>rows</em> and <em>columns</em>.</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxudmFscyA9IDE6OVxudmFsc1xubWF0MSA9IG1hdHJpeCh2YWxzLCBucm93ID0gMywgYnlyb3cgPSBUUlVFKVxubWF0MVxuYGBgIn0= -->
+<pre class="r"><code>vals = 1:9
 vals
 mat1 = matrix(vals, nrow = 3, byrow = TRUE)
 mat1</code></pre>
-<pre><code>
-&lt;!-- rnb-source-end --&gt;
-
-&lt;!-- rnb-chunk-end --&gt;
-
-
-&lt;!-- rnb-text-begin --&gt;
-
-
-The Boolean vector can be used to subset the original vector:
-
-
-&lt;!-- rnb-text-end --&gt;
-
-
-&lt;!-- rnb-chunk-begin --&gt;
-
-
-&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxubWF0MVsxLDNdICAjIGluZGV4IGJ5IHJvdyBhbmQgY29sdW1uXG5gYGBcbmBgYCJ9 --&gt;
-
-```r
-```r
-mat1[1,3]  # index by row and column</code></pre>
-<pre><code>
-&lt;!-- rnb-source-end --&gt;
-
-&lt;!-- rnb-chunk-end --&gt;
-
-
-&lt;!-- rnb-text-begin --&gt;
-
-
-## Matrix
-
-A matrix has two dimensions, *rows* and *columns*.
-
-
-&lt;!-- rnb-text-end --&gt;
-
-
-&lt;!-- rnb-chunk-begin --&gt;
-
-
-&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxubXlfdmVjID0gYyg4LCA2LCA3LCA1LCAzLCAwLCA5KVxubXlfbWF0ID0gbXlfdmVjICUqJSB0KG15X3ZlYylcbm1vZGUobXlfbWF0KVxubXlfbWF0XG5gYGBcbmBgYCJ9 --&gt;
-
-```r
-```r
-my_vec = c(8, 6, 7, 5, 3, 0, 9)
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubWF0MVsxLDNdICAjIGluZGV4IGJ5IHJvdyBhbmQgY29sdW1uXG5gYGAifQ== -->
+<pre class="r"><code>mat1[1,3]  # index by row and column</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>R supports matrix operations. For instance, multiplying a vector by
+its transpose creates a matrix:</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubXlfdmVjID0gYyg4LCA2LCA3LCA1LCAzLCAwLCA5KVxubXlfbWF0ID0gbXlfdmVjICUqJSB0KG15X3ZlYylcbm1vZGUobXlfbWF0KVxubXlfbWF0XG5gYGAifQ== -->
+<pre class="r"><code>my_vec = c(8, 6, 7, 5, 3, 0, 9)
 my_mat = my_vec %*% t(my_vec)
 mode(my_mat)
 my_mat</code></pre>
-<pre><code>
-&lt;!-- rnb-source-end --&gt;
-
-&lt;!-- rnb-chunk-end --&gt;
-
-
-&lt;!-- rnb-text-begin --&gt;
-
-
-
-&lt;!-- rnb-text-end --&gt;
-
-
-&lt;!-- rnb-chunk-begin --&gt;
-
-
-&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxubWF0MiA9IG1hdHJpeChjKCdhJywnYicsJ2MnLCdkJyksIG5yb3c9Milcbm1hdDJcbmBgYFxuYGBgIn0= --&gt;
-
-```r
-```r
-mat2 = matrix(c(&#39;a&#39;,&#39;b&#39;,&#39;c&#39;,&#39;d&#39;), nrow=2)
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>Matrices are not limited to numeric values. You can make a character
+matrix (if the need arises).</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubWF0MiA9IG1hdHJpeChjKCdhJywnYicsJ2MnLCdkJyksIG5yb3c9Milcbm1hdDJcbmBgYCJ9 -->
+<pre class="r"><code>mat2 = matrix(c(&#39;a&#39;,&#39;b&#39;,&#39;c&#39;,&#39;d&#39;), nrow=2)
 mat2</code></pre>
-<pre><code>
-&lt;!-- rnb-source-end --&gt;
-
-&lt;!-- rnb-chunk-end --&gt;
-
-
-&lt;!-- rnb-text-begin --&gt;
-
-
-R supports matrix operations. For instance, multiplying a vector by its transpose creates a matrix:
-
-
-&lt;!-- rnb-text-end --&gt;
-
-
-&lt;!-- rnb-chunk-begin --&gt;
-
-
-&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxubXlfbGlzdCA9IGxpc3QoXG4gIFxcSSBsaWtlIFJcXCxcbiAgYXMuRGF0ZShcXDIwMjItMDUtMTZcXCksXG4gIDIwLFxuICBjKDgsIDYsIDcsIDUsIDMsIDAsIDkpICAgI25vIGNvbW1hIGFmdGVyIGxhc3QgYXJnIChjZiBweXRob24pXG4pXG5teV9saXN0XG5gYGBcbmBgYCJ9 --&gt;
-
-```r
-```r
-my_list = list(
-  \I like R\,
-  as.Date(\2022-05-16\),
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+</div>
+<div id="single-type-summary" class="section level2">
+<h2>Single type summary</h2>
+<ul>
+<li>a stack of values <span class="math inline">\(\rightarrow\)</span>
+vector</li>
+<li>a stack of vectors <span class="math inline">\(\rightarrow\)</span>
+matrix</li>
+<li>a stack of matrices <span class="math inline">\(\rightarrow\)</span>
+array (multidimensional array)</li>
+</ul>
+<p>In general arrays are helpful for programming R and less commonly
+used for data analysis. (You might run into arrays for time series
+analysis).</p>
+</div>
+</div>
+<div id="mixed-type-containers" class="section level1">
+<h1>Mixed type containers</h1>
+<p>Lists and data.frames are extremely common in data analysis.</p>
+<div id="lists" class="section level2">
+<h2>Lists</h2>
+<p>Lists allow mixed types and might hold data values and data
+containers. Lists are commonly used to hold the results of a statistical
+analysis. For example, fitting a regression model returns a list-like
+model object.</p>
+<p>One way to create a list is to pass a series of arguments to the
+<code>list</code> function:</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubXlfbGlzdCA9IGxpc3QoXG4gIFwiSSBsaWtlIFJcIixcbiAgYXMuRGF0ZShcIjIwMjItMDUtMTZcIiksXG4gIDIwLFxuICBjKDgsIDYsIDcsIDUsIDMsIDAsIDkpICAgI25vIGNvbW1hIGFmdGVyIGxhc3QgYXJnIChjZiBweXRob24pXG4pXG5teV9saXN0XG5gYGAifQ== -->
+<pre class="r"><code>my_list = list(
+  &quot;I like R&quot;,
+  as.Date(&quot;2022-05-16&quot;),
   20,
   c(8, 6, 7, 5, 3, 0, 9)   #no comma after last arg (cf python)
 )
 my_list</code></pre>
-<pre><code>
-&lt;!-- rnb-source-end --&gt;
-
-&lt;!-- rnb-chunk-end --&gt;
-
-
-&lt;!-- rnb-text-begin --&gt;
-
-
-Matrices are not limited to numeric values. You can make a character matrix (if the need arises).
-
-
-&lt;!-- rnb-text-end --&gt;
-
-
-&lt;!-- rnb-chunk-begin --&gt;
-
-
-&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuZm9yIChlbGVtIGluIG15X2xpc3QpIHsgICAgIyBleGFtcGxlIG9mIGZsb3ctY29udHJvbCBcbiAgcHJpbnQoY2xhc3MoZWxlbSkpICAgICAgICMgc2VlIHRoZSBFbnZpcm9ubWVudCB0YWIgYXMgd2VsbFxufVxuYGBgXG5gYGAifQ== --&gt;
-
-```r
-```r
-for (elem in my_list) {    # example of flow-control 
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p><strong>Be sure to inspect the list object in the Environment
+tab!</strong></p>
+<p>Alternatively:</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZm9yIChlbGVtIGluIG15X2xpc3QpIHsgICAgIyBleGFtcGxlIG9mIGZsb3ctY29udHJvbCBcbiAgcHJpbnQoY2xhc3MoZWxlbSkpICAgICAgICMgc2VlIHRoZSBFbnZpcm9ubWVudCB0YWIgYXMgd2VsbFxufVxuYGBgIn0= -->
+<pre class="r"><code>for (elem in my_list) {    # example of flow-control 
   print(class(elem))       # see the Environment tab as well
 }</code></pre>
-<pre><code>
-&lt;!-- rnb-source-end --&gt;
-
-&lt;!-- rnb-chunk-end --&gt;
-
-
-&lt;!-- rnb-text-begin --&gt;
-
-
-## Single type summary
-
--   a stack of values $\rightarrow$ vector
--   a stack of vectors $\rightarrow$ matrix
--   a stack of matrices $\rightarrow$ array (multidimensional array)
-
-In general arrays are helpful for programming R and less commonly used for data analysis. (You might run into arrays for time series analysis).
-
-# Mixed type containers
-
-Lists and data.frames are extremely common in data analysis.
-
-## Lists
-
-Lists allow mixed types and might hold data values and data containers. Lists are commonly used to hold the results of a statistical analysis. For example, fitting a regression model returns a list-like model object.
-
-One way to create a list is to pass a series of arguments to the `list` function:
-
-
-&lt;!-- rnb-text-end --&gt;
-
-
-&lt;!-- rnb-chunk-begin --&gt;
-
-
-&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxubXlfbGlzdFtbMV1dICAgICAgICAgICMgZmlyc3QgbGlzdCBpdGVtXG5teV9saXN0W1s0XV1bMTozXSAgICAgIyBmaXJzdCAzIGVsZW1lbnRzIG9mIGZvdXJ0aCBsaXN0IGl0ZW1cbmBgYFxuYGBgIn0= --&gt;
-
-```r
-```r
-my_list[[1]]          # first list item
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>You can access list items by position using double square
+brackets:</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubXlfbGlzdFtbMV1dICAgICAgICAgICMgZmlyc3QgbGlzdCBpdGVtXG5teV9saXN0W1s0XV1bMTozXSAgICAgIyBmaXJzdCAzIGVsZW1lbnRzIG9mIGZvdXJ0aCBsaXN0IGl0ZW1cbmBgYCJ9 -->
+<pre class="r"><code>my_list[[1]]          # first list item
 my_list[[4]][1:3]     # first 3 elements of fourth list item</code></pre>
-<pre><code>
-&lt;!-- rnb-source-end --&gt;
-
-&lt;!-- rnb-chunk-end --&gt;
-
-
-&lt;!-- rnb-text-begin --&gt;
-
-
-**Be sure to inspect the list object in the Environment tab!**
-
-Alternatively:
-
-
-&lt;!-- rnb-text-end --&gt;
-
-
-&lt;!-- rnb-chunk-begin --&gt;
-
-
-&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxubXlfbGlzdDIgPSBsaXN0KFxuICBtZXNzYWdlID0gXFxJIGxpa2UgUlxcLFxuICB5ZXN0ZXJkYXkgPSAgYXMuRGF0ZShcXDIwMjItMDUtMTZcXCksXG4gIHdpZHRoID0gMjAsXG4gIG15X3ZlYyA9IGMoOCwgNiwgNywgNSwgMywgMCwgOSkgICNubyBjb21tYSBhZnRlciBsYXN0IGFyZyAoY2YgcHl0aG9uKVxuKVxubXlfbGlzdDJcbmBgYFxuYGBgIn0= --&gt;
-
-```r
-```r
-my_list2 = list(
-  message = \I like R\,
-  yesterday =  as.Date(\2022-05-16\),
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>That is bit of a mess, so consider naming your list elements for
+easier access:</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubXlfbGlzdDIgPSBsaXN0KFxuICBtZXNzYWdlID0gXCJJIGxpa2UgUlwiLFxuICB5ZXN0ZXJkYXkgPSAgYXMuRGF0ZShcIjIwMjItMDUtMTZcIiksXG4gIHdpZHRoID0gMjAsXG4gIG15X3ZlYyA9IGMoOCwgNiwgNywgNSwgMywgMCwgOSkgICNubyBjb21tYSBhZnRlciBsYXN0IGFyZyAoY2YgcHl0aG9uKVxuKVxubXlfbGlzdDJcbmBgYCJ9 -->
+<pre class="r"><code>my_list2 = list(
+  message = &quot;I like R&quot;,
+  yesterday =  as.Date(&quot;2022-05-16&quot;),
   width = 20,
   my_vec = c(8, 6, 7, 5, 3, 0, 9)  #no comma after last arg (cf python)
 )
 my_list2</code></pre>
-<pre><code>
-&lt;!-- rnb-source-end --&gt;
-
-&lt;!-- rnb-chunk-end --&gt;
-
-
-&lt;!-- rnb-text-begin --&gt;
-
-
-You can access list items by position using double square brackets:
-
-
-&lt;!-- rnb-text-end --&gt;
-
-
-&lt;!-- rnb-chunk-begin --&gt;
-
-
-&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxubXlfbGlzdDIkbWVzc2FnZSAgICAgIyBcXG1lc3NhZ2VcXCBlbGVtZW50XG5teV9saXN0MiRteV92ZWNbMTozXSAjIGZpcnN0IDMgaXRlbXMgZnJvbSBteV92ZWMgZWxlbWVudFxubmFtZXMobXlfbGlzdDIpXG5gYGBcbmBgYCJ9 --&gt;
-
-```r
-```r
-my_list2$message     # \message\ element
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p><strong>Note how this appears in the Environment tab</strong></p>
+<p>Now we can use the names to access the elements:</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubXlfbGlzdDIkbWVzc2FnZSAgICAgIyBcIm1lc3NhZ2VcIiBlbGVtZW50XG5teV9saXN0MiRteV92ZWNbMTozXSAjIGZpcnN0IDMgaXRlbXMgZnJvbSBteV92ZWMgZWxlbWVudFxubmFtZXMobXlfbGlzdDIpXG5gYGAifQ== -->
+<pre class="r"><code>my_list2$message     # &quot;message&quot; element
 my_list2$my_vec[1:3] # first 3 items from my_vec element
 names(my_list2)</code></pre>
-<pre><code>
-&lt;!-- rnb-source-end --&gt;
-
-&lt;!-- rnb-chunk-end --&gt;
-
-
-&lt;!-- rnb-text-begin --&gt;
-
-
-That is bit of a mess, so consider naming your list elements for easier access:
-
-
-&lt;!-- rnb-text-end --&gt;
-
-
-&lt;!-- rnb-chunk-begin --&gt;
-
-
-&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxubXlfZGYgPSBkYXRhLmZyYW1lKFxuICBpZCA9IDE6OSxcbiAgYWdlID0gcm91bmQocnVuaWYoOSwgOCwgMTIpKSxcbiAgaGVpZ2h0ID0gcm91bmQocnVuaWYoOSwgMzgsIDYwKSwgMSlcbilcbm15X2RmXG5gYGBcbmBgYCJ9 --&gt;
-
-```r
-```r
-my_df = data.frame(
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>Naming the list items creates a data structure like a hash table or
+Python dictionary. Lists with named elements are used for model results
+and you can access the particular components by name
+(e.g. model$residuals).</p>
+</div>
+<div id="data-frames" class="section level2">
+<h2>Data Frames</h2>
+<p>The data.frame family of data structures is the familiar data format
+with rows as cases and columns as variables. It is the same kind of data
+that would be stored in an Excel spreadsheet, CSV or Pandas
+DataFrame.</p>
+<p>The built-in frame-like structure is data.frame. There are two common
+variations you might encounter in add-on packages.</p>
+<ol style="list-style-type: decimal">
+<li><code>data.table</code> - adds large data features to
+data.frame</li>
+<li><code>tibble</code> - frame-like with strict checking (less
+convenience features, like partial match)</li>
+</ol>
+<p>The data.frames syntax is similar to the syntax for lists, but all
+the elements are vectors (columns) and must be same length.</p>
+<p>This chunk creates a data.frame with three columns (id, age,
+height):</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubXlfZGYgPSBkYXRhLmZyYW1lKFxuICBpZCA9IDE6OSxcbiAgYWdlID0gcm91bmQocnVuaWYoOSwgOCwgMTIpKSxcbiAgaGVpZ2h0ID0gcm91bmQocnVuaWYoOSwgMzgsIDYwKSwgMSlcbilcbm15X2RmXG5gYGAifQ== -->
+<pre class="r"><code>my_df = data.frame(
   id = 1:9,
   age = round(runif(9, 8, 12)),
   height = round(runif(9, 38, 60), 1)
 )
 my_df</code></pre>
-<pre><code>
-&lt;!-- rnb-source-end --&gt;
-
-&lt;!-- rnb-chunk-end --&gt;
-
-
-&lt;!-- rnb-text-begin --&gt;
-
-
-**Note how this appears in the Environment tab**
-
-Now we can use the names to access the elements:
-
-
-&lt;!-- rnb-text-end --&gt;
-
-
-&lt;!-- rnb-chunk-begin --&gt;
-
-
-&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxubXlfZGZbMSxdICAgICNmaXJzdCByb3dcbm15X2RmJGFnZSAgICAjY29sdW1uIFxcYWdlXFxcbmBgYFxuYGBgIn0= --&gt;
-
-```r
-```r
-my_df[1,]    #first row
-my_df$age    #column \age\</code></pre>
-<pre><code>
-&lt;!-- rnb-source-end --&gt;
-
-&lt;!-- rnb-chunk-end --&gt;
-
-
-&lt;!-- rnb-text-begin --&gt;
-
-
-Naming the list items creates a data structure like a hash table or Python dictionary. Lists with named elements are used for model results and you can access the particular components by name (e.g. model\$residuals).
-
-## Data Frames
-
-The data.frame family of data structures is the familiar data format with rows as cases and columns as variables. It is the same kind of data that would be stored in an Excel spreadsheet, CSV or Pandas DataFrame.
-
-The built-in frame-like structure is data.frame. There are two common variations you might encounter in add-on packages.
-
-1.  `data.table` - adds large data features to data.frame
-2.  `tibble` - frame-like with strict checking (less convenience features, like partial match)
-
-The data.frames syntax is similar to the syntax for lists, but all the elements are vectors (columns) and must be same length.
-
-This chunk creates a data.frame with three columns (id, age, height):
-
-
-&lt;!-- rnb-text-end --&gt;
-
-
-&lt;!-- rnb-chunk-begin --&gt;
-
-
-&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxubXlfZGYkZ3JhZGUgPSBcXDNyZFxcICAgIyBzaW5nbGUgdmFsdWUgYnJvYWRjYXN0IHRvIHdob2xlIGNvbHVtblxubXlfZGZcbm15X2RmJGdyYWRlWzU6OV0gPSBcXDR0aFxcICMgc2luZ2xlIHZhbHVlIGJyb2FkY2FzdCB0byBzdWJzZXRcbm15X2RmXG5gYGBcbmBgYCJ9 --&gt;
-
-```r
-```r
-my_df$grade = \3rd\   # single value broadcast to whole column
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p><strong>Check Environment tab and use the preview.</strong></p>
+<p>Rows are indexed and columns are named (and indexed):</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubXlfZGZbMSxdICAgICNmaXJzdCByb3dcbm15X2RmJGFnZSAgICAjY29sdW1uIFwiYWdlXCJcbmBgYCJ9 -->
+<pre class="r"><code>my_df[1,]    #first row
+my_df$age    #column &quot;age&quot;</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>Just declare new columns to creating them:</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubXlfZGYkZ3JhZGUgPSBcIjNyZFwiICAgIyBzaW5nbGUgdmFsdWUgYnJvYWRjYXN0IHRvIHdob2xlIGNvbHVtblxubXlfZGZcbm15X2RmJGdyYWRlWzU6OV0gPSBcIjR0aFwiICMgc2luZ2xlIHZhbHVlIGJyb2FkY2FzdCB0byBzdWJzZXRcbm15X2RmXG5gYGAifQ== -->
+<pre class="r"><code>my_df$grade = &quot;3rd&quot;   # single value broadcast to whole column
 my_df
-my_df$grade[5:9] = \4th\ # single value broadcast to subset
+my_df$grade[5:9] = &quot;4th&quot; # single value broadcast to subset
 my_df</code></pre>
-<pre><code>
-&lt;!-- rnb-source-end --&gt;
-
-&lt;!-- rnb-chunk-end --&gt;
-
-
-&lt;!-- rnb-text-begin --&gt;
-
-
-**Check Environment tab and use the preview.**
-
-Rows are indexed and columns are named (and indexed):
-
-
-&lt;!-- rnb-text-end --&gt;
-
-
-&lt;!-- rnb-chunk-begin --&gt;
-
-
-&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuc3VtbWFyeShteV9kZilcbmBgYFxuYGBgIn0= --&gt;
-
-```r
-```r
-summary(my_df)</code></pre>
-<pre><code>
-&lt;!-- rnb-source-end --&gt;
-
-&lt;!-- rnb-chunk-end --&gt;
-
-
-&lt;!-- rnb-text-begin --&gt;
-
-
-Just declare new columns to creating them:
-
-
-&lt;!-- rnb-text-end --&gt;
-
-
-&lt;!-- rnb-chunk-begin --&gt;
-
-
-&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxubXlfZGYkZ3JhZGUgPSBhcy5mYWN0b3IobXlfZGYkZ3JhZGUpXG5zdW1tYXJ5KG15X2RmKVxuYGBgXG5gYGAifQ== --&gt;
-
-```r
-```r
-my_df$grade = as.factor(my_df$grade)
-summary(my_df)</code></pre>
-<pre><code>
-&lt;!-- rnb-source-end --&gt;
-
-&lt;!-- rnb-chunk-end --&gt;
-
-
-&lt;!-- rnb-text-begin --&gt;
-
-
-There are many functions that operate on data.frames. For instance:
-
-
-&lt;!-- rnb-text-end --&gt;
-
-
-&lt;!-- rnb-chunk-begin --&gt;
-
-
-&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuaGVhZChteV9kZikgICAgICMgc2hvdyB0aGUgZmlyc3QgNiByb3dzIG9mIHRoZSBkYXRhIGZyYW1lXG4gICAgICAgICAgICAgICAgIyAoZ29vZCBmb3IgbGFyZ2UgZGF0YSBmcmFtZXMpXG5tZWFuKG15X2RmJGFnZSkgIyBjb21wdXRlIG1lYW4gb2YgYSBjb2x1bW5cbnNkKG15X2RmJGFnZSkgICAjIGNvbXB1dGUgc3RhbmRhcmQgZGV2aWF0aW9uIG9mIGEgY29sdW1uXG5gYGBcbmBgYCJ9 --&gt;
-
-```r
-```r
-head(my_df)     # show the first 6 rows of the data frame
-                # (good for large data frames)
-mean(my_df$age) # compute mean of a column
-sd(my_df$age)   # compute standard deviation of a column</code></pre>
-<pre><code>
-&lt;!-- rnb-source-end --&gt;
-
-&lt;!-- rnb-chunk-end --&gt;
-
-
-&lt;!-- rnb-text-begin --&gt;
-
-
-The summary for grade is disappointing. We should make this a factor, so it is treated as a categorical variable.
-
-
-&lt;!-- rnb-text-end --&gt;
-
-
-&lt;!-- rnb-chunk-begin --&gt;
-
-
-&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubXlfZGYkZ3JhZGUgPSBhcy5mYWN0b3IobXlfZGYkZ3JhZGUpXG5zdW1tYXJ5KG15X2RmKVxuYGBgIn0= --&gt;
-
-```r
-my_df$grade = as.factor(my_df$grade)
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>There are many functions that operate on data.frames. For
+instance:</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3VtbWFyeShteV9kZilcbmBgYCJ9 -->
+<pre class="r"><code>summary(my_df)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>The summary for grade is disappointing. We should make this a factor,
+so it is treated as a categorical variable.</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubXlfZGYkZ3JhZGUgPSBhcy5mYWN0b3IobXlfZGYkZ3JhZGUpXG5zdW1tYXJ5KG15X2RmKVxuYGBgIn0= -->
+<pre class="r"><code>my_df$grade = as.factor(my_df$grade)
 summary(my_df)</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
@@ -3009,7 +2483,6 @@ sd(my_df$age)   # compute standard deviation of a column</code></pre>
 <!-- rnb-text-begin -->
 </div>
 </div>
-</div>
 <div id="summary" class="section level1">
 <h1>Summary</h1>
 <p>If you understand the semantics for functions, lists, data.frames and
@@ -3019,7 +2492,7 @@ for function calls.</p>
 <!-- rnb-text-end -->
 </div>
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAiMjAgTWludXRlcyB0byBSIgpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sKLS0tCgojIFIgTm90ZWJvb2sKCiMjIFIgbm90ZWJvb2sgc3VwcG9ydHMgKmxpdGVyYXRlIGFuYWx5c2lzKgoKSW4gKmxpdGVyYXRlIHN0YXRpc3RpY2FsIGFuYWx5c2lzKiwgKipkb2N1bWVudGF0aW9uKiosICoqc3BlY2lmaWNhdGlvbioqLCAqKmV4cGxhbmF0aW9uKiosICoqaW50ZXJwcmV0YXRpb24sKiogYW5kICoqY29kZSoqIGNvLWV4aXN0IGluIGEgc2luZ2xlIGRvY3VtZW50IHRoYXQgcHJlc2VudHMgdGhlIGFuYWx5c2lzIHByb2Nlc3MgaW4gYSBuYXJyYXRpdmUgZm9ybWF0LgoKSW4gY29udHJhc3QgdG8gc2NyaXB0cywgd2hlcmUgY29kZSBpcyB0aGUgZGVmYXVsdCBraW5kIG9mIGNvbnRlbnQgYW5kIGV2ZXJ5dGhpbmcgZWxzZSBtdXN0IGJlIHNob2UtaG9ybmVkIGludG8gY29tbWVudHMsIHRoZSBkZWZhdWx0IG5vdGVib29rIGNvbnRlbnQgaXMgdGV4dC4KCi0gICBDb2RlIGFuZCByZXN1bHRzIGFwcGVhciBpbiBzcGVjaWFsbHkgZGVzaWduYXRlZCBjb250ZW50IGJsb2Nrcy4KCi0gICBUZXh0IGJsb2NrcyBzdXBwb3J0IGEgcmFuZ2Ugb2YgZm9ybWF0dGluZyBvcHRpb25zIHZpYSBbUiBNYXJrZG93bl0oaHR0cHM6Ly9ybWFya2Rvd24ucnN0dWRpby5jb20vbGVzc29uLTEuaHRtbCkKCiMjIyBSIE1hcmtkb3duCgpBbHRlcm5hdGl2ZWx5LCB1c2UgdGhlICoqKlZpc3VhbCoqKiBlZGl0b3IgbW9kZSB0byBpbnNlcnQgdGhlc2UgZm9ybWF0cyBpbnRvIHRoZSBkb2N1bWVudC4KCltRdWljayBvdmVydmlldyBvZiBmb3JtYXR0aW5nXShodHRwczovL3JtYXJrZG93bi5yc3R1ZGlvLmNvbS9sZXNzb24tOC5odG1sKSBvcHRpb25zLCBpbmNsdWRpbmc6CgotICAgKml0YWxpY3MqCi0gICAqKmJvbGQqKgotICAgYGNvZGVgCi0gICBbbGlua3NdKHJtYXJrZG93bi5yc3R1ZGlvLmNvbSkKLSAgIGV0Yy4KCkJ1dCBkaWQgeW91IGtub3cgdGhhdCB5b3UgY2FuIGFsc28gdXNlIFIgTWFya2Rvd24ncyBtYXJrZG93biB0byBtYWtlCgotICAgTGFUZVggZXF1YXRpb25zLCAkRSA9IG1jXnsyfSQKLSAgIEFuZCBiaWJsaW9ncmFwaGllcyBbQHJtYXJrZG93bjE1XS4KCj4gYGBgIHs9fQo+IE1hcmtkb3duIHByb3ZpZGVzIGFuIGVhc3kgd2F5IHRvIG1ha2Ugc3RhbmRhcmQgdHlwZXMgb2YgZm9ybWF0dGVkIHRleHQsIGxpa2UKPgo+IC0gKml0YWxpY3MqCj4gLSAqKmJvbGQqKgo+IC0gYGNvZGVgCj4gLSBbbGlua3NdKHJtYXJrZG93bi5yc3R1ZGlvLmNvbSkKPiAtIGV0Yy4KPgo+IEJ1dCBkaWQgeW91IGtub3cgdGhhdCB5b3UgY2FuIGFsc28gdXNlIFIgTWFya2Rvd24ncyBtYXJrZG93biB0byBtYWtlCj4KPiAtIExhVGVYIGVxdWF0aW9ucywgJEUgPSBtY157Mn0kCj4gLSBBbmQgYmlibGlvZ3JhcGhpZXMgW0BybWFya2Rvd24xNV0uCj4gYGBgCgpNYXJrZG93biBhbHNvIHN1cHBvcnRzIGEgaGllcmFyY2h5IG9mIGhlYWRpbmdzIHRvIG9yZ2FuaXplIHlvdXIgZG9jdW1lbnQuIFRoZSAqKk91dGxpbmUqKiB0byB0aGUgcmlnaHQgaXMgZ2VuZXJhdGVkIGF1dG9tYXRpY2FsbHkgYnkgdGhlIGhlYWRpbmdzIGluIHRoZSBkb2N1bWVudC4gKipJbiBtYXJrZG93biBkb2N1bWVudHMsIGAjYCBpcyBmb3IgaGVhZGluZ3MsIG5vdCBjb21tZW50cyEqKgoKYGBgIHs9fQojIEgxIGhlYWRpbmcgKHRvcCBsZXZlbCBoZWFkZXIpCiMjIEgyCiMjIyBIMwouLi4KIyMjIyMjIEg2IChkZWVwZXN0IGxldmVsIGhlYWRlcikKYGBgCgojIyBSIE5vdGVib29rIEdvdGNoYXM6CgotICAgVGhlIGNvZGUgeW91IHJ1biBpbiBSIE5vdGVib29rIGlzIHJ1bm5pbmcgaW4gdGhlIGFuIFIgY29uc29sZSBzZXNzaW9uLiBFYWNoIGNlbGwgZXhlY3V0aW9uIGNhbiBwb3RlbnRpYWxseSBjaGFuZ2UgdGhlIHZhbHVlcyBhc3NpZ25lZCB0byB2YXJpYWJsZXMuIE9yZGVyIG1hdHRlcnMKCi0gICBCZWNhdXNlIHlvdSBjYW4gc2tpcCBhcm91bmQgdXNpbmcgdGhlIG91dGxpbmUsIGl0IGlzIGVhc3kgdG8gY3JlYXRlIHlvdXIgbm90ZWJvb2sgaW4gYSBub24tbGluZWFyIHdheS4gV2hlbiBhdXRob3JpbmcsIHlvdSBtaWdodCBydW4gc29tZSBjZWxscyBtb3JlIHRoYW4gb25jZSBvciBydW4gY2VsbHMgb3V0IG9mIG9yZGVyLgoKLSAgIERpc2NpcGxpbmUgeW91cnNlbGYgdG8gbWFrZSBub3RlYm9va3MgdGhhdCBwcm9kdWNlIGNvcnJlY3QgcmVzdWx0cyB3aGVuIGV4ZWN1dGVkIGxpbmVhcmx5IHVzaW5nIHRoZSBgUnVuIEFsbGAgY29tbWFuZC4KCi0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLQoKIyBSIGFzIGEgY2FsY3VsYXRvcgoKV2Ugc2F3IHRoaXMgY29udGVudCBhbHJlYWR5LCBpbiB0aGUgZm9ybSBvZiBjb21tZW50cyBpbiBhbiBSIHNjcmlwdCBmaWxlLiBUaGUgdGV4dCBmb3JtYXR0aW5nIG9wdGlvbnMgaW4gUiBOb3RlYm9vayBtYWtlIGNvbW11bmljYXRpb24gbW9yZSBlZmZlY3RpdmUgYW5kIHZpc3VhbGx5IGludGVyZXN0aW5nLgoKIyMgT3BlcmF0b3JzCgotICAgYCtgIGFkZGl0aW9uCi0gICBgLWAgc3VidHJhY3Rpb24KLSAgIGAqYCBtdWx0aXBsaWNhdGlvbgotICAgYC9gIGRpdmlzaW9uCi0gICBgXmAgb3IgYCoqYCBleHBvbmVudGlhdGlvbgotICAgeCBgJSVgIHkgbW9kdWx1cwotICAgeCBgJS8lYCB5IGludGVnZXIgZGl2aXNpb24KCiMjIExvZ2ljYWwgT3BlcmF0b3JzCgotICAgYDxgIGxlc3MgdGhhbgotICAgYDw9YCBsZXNzIHRoYW4gb3IgZXF1YWwgdG8KLSAgIGA+YCBncmVhdGVyIHRoYW4KLSAgIGA+PWAgZ3JlYXRlciB0aGFuIG9yIGVxdWFsIHRvCi0gICBgPT1gIGVxdWFscyAoY29tcGFyaXNvbikKLSAgIGAhPWAgbm90IGVxdWFsCi0gICBgIXhgIG5vdCB4Ci0gICBgeCB8fCB5YCB4IG9yIHkgKHJldHVybnMgVFJVRSBvciBGQUxTRSwgdXNlIGluIGlmIGNvbmRpdGlvbnMpCi0gICBgeCAmJiB5YCB4IGFuZCB5IChyZXR1cm5zIFRSVUUgb3IgRkFMU0UsIHVzZSBpbiBpZiBjb25kaXRpb25zKQotICAgYHggfCB5YCB4IE9SIHkgKGNvbXBhcmVzIGJpdHdpc2UsIHNvIGl0IHBvdGVudGlhbGx5IHJldHVybnMgYSB2ZWN0b3IpCi0gICBgeCAmIHlgIHggQU5EIHkgKGNvbXBhcmVzIGJpdHdpc2UsIHNvIGl0IHBvdGVudGlhbGx5IHJldHVybnMgYSB2ZWN0b3IpCgpzZWUgYD9iYXNlOjpMb2dpY2AgZm9yIGRldGFpbHMuCgojIyMjIFRyeSBpdDoKCldlIGNhbiB0cnkgdGhlIGNvZGUgcmlnaHQgaW4gdGhlIG5vdGVib29rLiBUaGlzIGlzIGFuIFIgY29kZSBjaHVuayAobm90ZSB0aGF0IGl0IHN0YXJ0cyB3aXRoIGB7cn1gICkuCgpSdW4gdGhpcyBjaHVuayBieSBjbGlja2luZyBpdHMgKlJ1biogYnV0dG9uIChncmVlbiByaWdodCBhcnJvd2hlYWQg4pa277iPICkgb3IgYnkgY2xpY2tpbmcgaW5zaWRlIHRoZSBibG9jayBhbmQgcHJlc3NpbmcgKkNtZCtTaGlmdCtFbnRlciAobWFjT1MpIG9yKiAqQ3RybCtTaGlmdCtFbnRlciogKFdpbmRvd3MpLgoKYGBge3J9CjIgKyAyCmBgYAoKYGBge3J9CjMgPiA0IApgYGAKCmBgYHtyfQpjKFRSVUUsIEZBTFNFLCBUUlVFLCBGQUxTRSkgJiBjKFRSVUUsIFRSVUUsIEZBTFNFLCBGQUxTRSkKYGBgCgpgYGB7cn0KaWYgKCAoMyA8IDQpICYmICgnYWEnIDwgJ2FiJykgKXsKICBwcmludCgiVHJ1ZSIpCn0gZWxzZSB7CiAgcHJpbnQoIkZhbHNlIikKfQpgYGAKCioqQ29uc29sZSByZXN1bHRzIGFwcGVhciByaWdodCBiZWxvdyB0aGUgY29kZSBjZWxscyB3aXRoaW4gdGhlIGRvY3VtZW50LioqCgotICAgKipObyBuZWVkIHRvIGtlZXAgY29uc29sZSBvcGVuKioKCiMjIE1hdGggYW5kIFN0YXRzIGZ1bmN0aW9ucyAvIGNvbnN0YW50cwoKLSAgIGBsb2coeClgIG5hdHVyYWwgbG9nIG9yIGluIHNwZWNpZmllZCBiYXNlCi0gICBgZXhwKHgpYCBleHBvbmVudGlhbAotICAgYHBpYCB2YWx1ZSBvZiBwaQotICAgYG1lYW4oeClgIG1lYW4KLSAgIGB2YXIoeClgIHZhcmlhbmNlCi0gICBgc2QoeClgIHN0YW5kYXJkIGRldmlhdGlvbgotICAgLi4uIGFuZCBtYW55IG1vcmUKCiMjIyMgTm90ZSBhYm91dCBmdW5jdGlvbnMKCioqWW91IGRvbid0IG5lZWQgdG8gcHJvZ3JhbSBmdW5jdGlvbnMgdG8gdXNlIFIsIGJ1dCB5b3UgZG8gbmVlZCB0byBjYWxsIGZ1bmN0aW9ucyEqKiBBcHBseWluZyBmdW5jdGlvbnMgdG8gZGF0YSBpcyB0aGUgZnVuZGFtZW50YWwgYnVpbGRpbmcgYmxvY2sgb2Ygc3RhdGlzdGljYWwgYW5hbHlzaXMgaW4gUi4KCkluIHByb2dyYW1taW5nLCBhIGZ1bmN0aW9uIHRha2VzIGlucHV0IGFuZCByZXR1cm5zIGFuIG91dHB1dC4gSW4gUiwgdGhlIGNvbnZlbnRpb24gZm9yIGNhbGxpbmcgYSBmdW5jdGlvbiBpcyB0byB3cml0ZSB0aGUgZnVuY3Rpb24gbmFtZSBmb2xsb3dlZCBieSBhIHBhaXIgb2YgcGFyZW50aGVzaXMuIFRoZSBmdW5jdGlvbiBhcmd1bWVudHMgYXBwZWFyIHdpdGggdGhlIHBhcmVudGhlc2lzOgoKYG5hbWUoYXJndW1lbnQpYAoKSWYgdGhlIGZ1bmN0aW9uIGFjY2VwdHMgbXVsdGlwbGUgYXJndW1lbnRzLCBzZXBhcmF0ZSB0aGUgYXJndW1lbnRzIHdpdGggYSBjb21tYToKCmBuYW1lKGFyZ3VtZW50MSwgYXJndW1lbnQyKWAKCmBgYHtyfQpsb2coMTApICAgICAgICAjIG5hdHVyYWwgbG9nIG9mIDEwCmxvZygxMCwgMTApICAgICMgd2hhdCBkbyB5b3UgZXhwZWN0IHRoaXMgZG9lcz8KYGBgCgpgYGB7cn0KP2xvZyAgICAgICAgICAgIyBsZXRzIGNoZWNrIHRoZSBkb2NzIChjbGljayB0aGUgaGVscCB0YWIpCmBgYAoKU29tZSBmdW5jdGlvbnMgdXNlIG5hbWVkIGFyZ3VtZW50cy4gUmVmZXIgdGhlIHRvIGRvY3VtZW50YXRpb24gZm9yIHRoZSBmdW5jdGlvbiB0byBsZWFybiB0aGUgYXJndW1lbnQgbmFtZXMuIFVzZSB0aGUgbmFtZXMgd2hlbmV2ZXIgeW91IGNhbiB0byBtYWtlIHRoZSBtZWFuaW5nIG9mIHlvdXIgY29kZSBtb3JlIGNsZWFyLiBJbnNpZGUgYSBmdW5jdGlvbiBjYWxsLCB5b3Ugc2hvdWxkIHVzZSB0aGUgYD1gIHNpZ24gdG8gYXR0YWNoIGEgdmFsdWUgdG8gYW4gYXJndW1lbnQgbmFtZS4KCmBgYHtyfQpsb2coMTAsIGJhc2U9MTApICAgICMgdXNpbmcgdGhlIG5hbWVkIGFyZ3VtZW50cyBtYWtlcyB0aGUgbWVhbmluZyBjbGVhci4KYGBgCgotLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0KCiMgVmFyaWFibGVzCgpWYXJpYWJsZXMgYXJlIHVzZWQgdG8gc3RvcmUgYW5kIHVzZSB2YWx1ZXMuCgpZb3UgY2hvb3NlIHRoZSB2YXJpYWJsZSBuYW1lLCBidXQgYmUgY2FyZWZ1bDoKCi0gICBJZiB0aGUgdmFyaWFibGUgbmFtZSBpcyB0aGUgc2FtZSBhcyBhIGZ1bmN0aW9uIHlvdSB3aGF0IHRvIHVzZSwgeW91ciBjb2RlIG1heSBiZSBoYXJkIHRvIHJlYWQuIFIgd2lsbCBtb3N0bHkgYmUgYWJsZSB0byBrZWVwIHRyYWNrIG9mIHZhcmlhYmxlIHZzIGZ1bmN0aW9uIG5hbWVzLgoKLSAgIFRoZXJlIGFyZSBhIHNtYWxsIG51bWJlciBvZiByZXNlcnZlZCBuYW1lcyB0aGF0IGNhbm5vdCBiZSB1c2VkIGFzIHZhcmlhYmxlIG5hbWVzLiBTZWUgYD9iYXNlOjpyZXNlcnZlZGAKClN1cHBvc2Ugd2UgbmVlZCB0byBzdG9yZSB0aGUgbWVhc3VyZW1lbnQgZm9yIGFuIG9iamVjdCdzIHdpZHRoLiBXZSBtaWdodCBjcmVhdGUgYSB2YXJpYWJsZSB0byBob2xkIHRoZSB2YWx1ZS4gKipXZSBjYW4gdXNlIGEgc2luZ2xlIGA9YCBvciBhIGA8LWAgdG8gYXNzaWduIGEgdmFsdWUgdG8gdmFyaWFibGUgbmFtZS4qKiBUaGUgYDwtYCBmb3IgYXNzaWdubWVudCBjb21lcyBmcm9tIHRoZSBBUEwgbGFuZ3VhZ2Ugd2hpY2ggdXNlZCBhIHNwZWNpYWwga2V5Ym9hcmQgZm9yIHN5bWJvbHMuIFRoZXNlIGtleWJvYXJkcyBoYXZlbid0IGJlZW4gbWFkZSBzaW5jZSB0aGUgODAncyBidXQgdGhlIGNvbnZlbnRpb24gbGl2ZXMgb24uIFlvdSB3aWxsIHNlZSBib3RoIHN0eWxlcyBvZiBhc3NpZ25tZW50LCBzb21ldGltZXMgd2l0aGluIGEgc2luZ2xlIGRvY3VtZW50IQoKYGBge3J9CndpZHRoID0gMjAgICAgICMgZG9lcyBub3QgcHJpbnQgYW55dGhpbmcgKHRyeSBscygpIG9yIG9iamVjdHMoKSkKYGBgCgpJbiBjb250cmFzdCB0byBvdGhlciBzdGF0aXN0aWNhbCBzb2Z0d2FyZSwgUiBkb2VzIG5vdCBwcmludCByZXN1bHRzIGFmdGVyIHJ1bm5pbmcgY29tbWFuZHMuIEluc3RlYWQsIFIgY3JlYXRlcyBvYmplY3RzIGluIG1lbW9yeSBmb3IgeW91IHRvIHVzZS4gVGhpcyBjYW4gZmVlbCBsaWtlIFIgaXMgbm90ICpkb2luZyogYW55dGhpbmcsIHVubGVzcyB5b3Uga25vdyB3aGVyZSB0byBsb29rLiBDbGljayB0aGUgRW52aXJvbm1lbnQgdGFiIChwcm9iYWJseSBpbiB0aGUgdXBwZXIgcmlnaHQgcGFuZSkgYW5kIG5vdGUgaG93IHRoZSBlbnZpcm9ubWVudCBjaGFuZ2VzIGFzIHlvdSBleGVjdXRlIGVhY2ggY29tbWFuZC4KCmBgYHtyfQp3aWR0aCAgICAgICAgICAjIGJ1dCB2YXJpYWJsZSB3YXMgY3JlYXRlZCAoc2VlIEVudmlyb25tZW50IHRhYikKYGBgCgpWYXJpYWJsZXMgY2FuIGhvbGQgdGhlIHJlc3VsdHMgb2YgYSBjb21wdXRhdGlvbiBhcyB3ZWxsLgoKYGBge3J9CmhlaWdodCA9IDUgKiA5CmBgYAoKYGBge3J9CndpZHRoICogaGVpZ2h0ICMgc2FtZSBhcyAyMCAqIDQ1CmBgYAoKU3VwcG9zZSB3ZSBtYWtlIGEgbWlzdGFrZToKCmBgYHtyfQpscygpICMgc2hvdyB0aGUgb2JqZWN0cyBpbiBtZW1vcnkKd2lkaXRoIDwtIDEwICNvb3BzLCBtaXNzcGVsbGVkICJ3aWR0aCIgCmxzKCkKYGBgCgpXZSBkb24ndCBoYXZlIHRvIGxpdmUgd2l0aCBpdC4gT2JqZWN0cyBjYW4gYmUgcmVtb3ZlZCB1c2luZyB0aGUgcm0oKSBmdW5jdGlvbi4KCmBgYHtyfQpybSh3aWRpdGgpCmxzKCkKYGBgCgotLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0KCiMgRGF0YSB0eXBlcwoKRGF0YSB0eXBlcyBhcmUgYSB3YXkgdG8gbW9kZWwgdGhlIGRpZmZlcmVudCBraW5kcyBvZiBkYXRhIHdlIGVuY291bnRlciBldmVyeSBkYXkgaW4gb3VyIHdvcmsuIE1vc3QgZGF0YSB1c2VkIGZvciBzdGF0aXN0aWNhbCBhbmFseXNpcyBpcyBwcm9iYWJseSBudW1lcmljLCBidXQgb3VyIGRhdGEgYWxzbyBjb250YWluIGluZm9ybWF0aW9uIGxpa2UgbmFtZXMsIHRoYXQgYXJlICoqc3RyaW5ncyoqIG9mIGxldHRlcnMuIFdlIG1pZ2h0IGhhdmUgaW5kaWNhdG9yIHZhcmlhYmxlcyB0aGF0IGNhbiBiZSBlaXRoZXIgKip0cnVlIG9yIGZhbHNlKiouIFNvbWUgb2YgdGhlIHN0cmluZy1saWtlIGRhdGEgcmVwcmVzZW50IHNwZWNpYWwga2luZHMgb2YgZGF0YSwgbGlrZSBkYXRlcywgdGltZXMgb3IgbGV2ZWxzIG9mIGEgY2F0ZWdvcmljYWwgdmFyaWFibGUuCgpJdCBpcyBpbXBvcnRhbnQgdG8gbWFrZSBzdXJlIHRoYXQgeW91ciBkYXRhIGlzIHJlcHJlc2VudGVkIGJ5IHRoZSBjb3JyZWN0IFIgZGF0YSB0eXBlIGJlY2F1c2UgZGF0YSB0eXBlIGRldGVybWluZXMgaG93IFIgY2FuIHVzZSB0aGUgdmFsdWVzLgoKKipNb3N0IGNvbW1vbiBkYXRhIHR5cGVzKioKCistLS0tLS0tLS0tLS0tLSstLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0rCnwgVHlwZSAgICAgICAgIHwgRGVzY3JpcHRpb24gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB8Cis9PT09PT09PT09PT09Ois9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0rCnwgbnVtZXJpYyAgICAgIHwgMywgNS4yLCBldGMgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB8CistLS0tLS0tLS0tLS0tLSstLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0rCnwgQm9vbGVhbiAgICAgIHwgVFJVRSwgRkFMU0UgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB8CistLS0tLS0tLS0tLS0tLSstLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0rCnwgY2hhcmFjdGVyICAgIHwgKGkuZS4gc3RyaW5nKSAiY2F0IiwgImRvZyIgICAgICAgICAgICAgICAgICAgICAgICAgICB8CistLS0tLS0tLS0tLS0tLSstLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0rCnwgZmFjdG9yICAgICAgIHwgY2F0ZWdvcmljYWwgdmFyaWFibGUgLVwgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB8CnwgICAgICAgICAgICAgIHwgZGF0YSB2YWx1ZSBpcyBvbmUgb2YgYSBzbWFsbCBzZXQgb2YgcG9zc2libGUgdmFsdWVzLiB8CistLS0tLS0tLS0tLS0tLSstLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0rCnwgZGF0ZVt0aW1lXSAgIHwgcmVwcmVzZW50cyBhIGRhdGUgb3Igc3BlY2lmaWMgZGF0ZSBhbmQgdGltZS4gICAgICAgICB8CistLS0tLS0tLS0tLS0tLSstLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0rCgogICAgNSAgICAgICAgICAgIyBudW1lcmljCiAgICBUUlVFICAgICAgICAjIEJvb2xlYW4gLyBMb2dpY2FsIAoKICAgICJJIGxpa2UgUiIgICMgY2hhcmFjdGVyKHMpIC8gc3RyaW5nCiAgICAnSSBsaWtlIFInICAjIHNpbmdsZSBvciBkb3VibGUgcXVvdGVzCgpEYXRhIHR5cGUgZGV0ZXJtaW5lcyB3aGF0IHlvdSBjYW4gZG8gd2l0aCB0aGUgZGF0YToKCmBgYHtyfQo1ICogMiAjIHBlcmZlY3RseSBzZW5zaWJsZQpgYGAKCmBgYHtyfQoiSSBsaWtlIFIiICogMiAgIyBub25zZW5zaWNhbApgYGAKClB5dGhvbiBzdHlsZSBjb25jYXQgZG9lcyBub3Qgd29yazogYCJJIiArICJsaWtlIiArICJSImAKCk9uIHRoZSBvdGhlciBoYW5kLCBzdHJpbmcgZnVuY3Rpb25zIGFuZCBjb21wYXJpc29uIG9wZXJhdG9ycyBkbyB3b3JrIHdpdGggc3RyaW5ncy4KCmBgYHtyfQpwYXN0ZSgiSSIsICJsaWtlIiwgIlIiKQoiYWEiIDwgImFiIgoiY2MiID4gImNkIgpgYGAKCmBgYHtyfQp0aGlzX2RheSA9IGFzLkRhdGUoIjIwMjItMDUtMTciKQp5ZXN0ZXJkYXkgPSAgYXMuRGF0ZSgiMjAyMi0wNS0xNiIpCnRoaXNfZGF5Cnllc3RlcmRheQp0aGlzX2RheSA8IHllc3RlcmRheSAgIz8gV2FzIHRvZGF5IGJlZm9yZSB5ZXN0ZXJkYXk/CiAgICAgICAgICAgICAgICAgICAgICAjIFdoeSBkaWQgdXMgInRoaXNfZGF5IiBmb3IgdG9kYXk/IChuYW1lc3BhY2UpCiAgICAgICAgICAgICAgICAgICAgICAjIFdpbGwgZGlzY3VzcyBpbiBwYWluIHBvaW50cyBzZWN0aW9ucwpmb3JtYXQoYXMuRGF0ZSgiMjAyMi0wNS0xNyIpLCAnJUEgJUIgJWQgJVknKSAgI1BPU0lYICBkYXRlIGZvcm1hdHRpbmcKYGBgCgotLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0KCiMgRGF0YSBDb250YWluZXJzIChPYmplY3RzKQoKRGF0YSB2YWx1ZXMgbW9yZSB1c2VmdWwgd2hlbiBzdG9yZWQgYXMgYSBjb2xsZWN0aW9uIGluIGEgY29udGFpbmVyLiBXZSBkb24ndCB3YW50IHRvIHN0b3JlIHRoZSBlYWNoIGNlbGwgaW4gb3VyIGRhdGEgdGFibGUgdW5kZXIgYSBkaWZmZXJlbnQgbmFtZSEKClIgaGFzIHR3byB0eXBlcyBvZiBkYXRhIGNvbnRhaW5lcnM7IGNvbnRhaW5lcnMgdGhhdCBob2xkIGNvbGxlY3Rpb25zIG9mIHNhbWUtdHlwZSB2YWx1ZXMgYW5kIHRob3NlIHRoYXQgY2FuIGhvbGQgbWl4ZWQgdHlwZXMuCgoqKlNpbmdsZSBUeXBlIENvbnRhaW5lcnMqKgoKLSAgIHZlY3RvciB2W2ldCi0gICBtYXRyaXggbVtpLGtdCi0gICBhcnJheSBhW2ksaixrLC4uLi4uXQoKKipNdWx0aS10eXBlIENvbnRhaW5lcnMqKgoKLSAgIExpc3RzCi0gICBEYXRhIEZyYW1lcwoKWW91IGNhbiBjb252ZXJ0IGJldHdlZW4gY29tcGF0aWJsZSBjb250YWluZXJzIHVzaW5nIGBhcy4qKClgIG1ldGhvZHMgKGFzLmxpc3QoKSwgYXMuZGF0YS5mcmFtZSgpKS4gRm9yIGluc3RhbmNlLCB5b3UgbWlnaHQgY29udmVydCBhIG1hdHJpeCBgbWAgdG8gYSBkYXRhLmZyYW1lIHVzaW5nIGBhcy5kYXRhLmZyYW1lKG0pYC4KCiMjIFZlY3RvcgoKQSB2ZWN0b3IgaXMgbGlrZSBhIGNvbHVtbiBmcm9tIGEgZGF0YSB0YWJsZS4gSXQgaGFzIG9uZSBkaW1lbnNpb24gKGxlbmd0aCkgYW5kIGFsbCB0aGUgZWxlbWVudHMgaW4gdGhlIHZlY3RvciBhcmUgb2YgdGhlIHNhbWUga2luZC4KCmBgYHtyIGVjaG89RkFMU0V9Cm15X3ZlYyA9IGMoOCwgNiwgNywgNSwgMywgMCwgOSkKbXlfdmVjCmBgYAoKVGhlIGZpcnN0IGVsZW1lbnQgaXMgYXQgaW5kZXggMS4gTGFzdCBlbGVtZW50IGlzIGF0IGxlbmd0aChteV92ZWMpCgpgYGB7cn0KbXlfdmVjWzFdICAgIyB1c2Ugc3F1YXJlIGJyYWNrZXQgdG8gZ2V0IGFuIGl0ZW0gZnJvbSB2ZWN0b3IKbGVuZ3RoKG15X3ZlYykgICAjIGxlbmd0aCBpcyA3Cm15X3ZlY1s3XQpteV92ZWNbMTozXSAgIyByYW5nZXMgYXJlIGluY2x1c2l2ZQpgYGAKCk1vc3QgUiBvcGVyYXRvcnMgYW5kIGZ1bmN0aW9ucyBzdXBwb3J0IHZlY3RvciBpbnB1dAoKYGBge3J9Cm15X3ZlY14yCm15X3ZlYyArIG15X3ZlYwpteV92ZWMgKiBteV92ZWMgICAjIHBhaXJ3aXNlLCB2ZWN0b3IgbXVsdGlwbGljYXRpb24KYGBgCgoqKkNhdXRpb246KiogSWYgeW91IGFzayBSIHRvIG1ha2UgYSB2ZWN0b3Igb2YgbWl4ZWQgdHlwZXMsIFIgYXV0b21hdGljYWxseSAoYW5kIHNpbGVudGx5KSBmaW5kcyBhIGNvbW1vbiBkYXRhIHR5cGUuIFRoaXMgbWlnaHQgbm90IGJlIHRoZSB0eXBlIHlvdSB3b3VsZCBoYXZlIHNlbGVjdGVkLgoKKkEgc3RyaW5nLCBhIEJvb2xlYW4gYW5kIGFuIGludGVnZXIgZ28gaW50byBhIHZlY3Rvci4uLioKCmBgYHtyfQptaXhlZCA9IGMoIlIiLCBUUlVFLCAxMCkKbW9kZShtaXhlZCkKbWl4ZWQgIyBldmVyeXRoaW5nIGlzIHN0cmluZyEKYGBgCgpgYGB7cn0KbWl4ZWQyID1jKDEsIDIsIDMsIFRSVUUpCm1vZGUobWl4ZWQyKQptaXhlZDIgIyBCb29sZWFuIGlzIG5vdyBhbiBpbnQhICMgYXMubG9naWNhbCgxKSA9PSBUUlVFCmBgYAoKUiBpbmNsdWRlcyBtYW55IGZ1bmN0aW9ucyB0byBtYWtlIHNlcXVlbmNlcwoKYGBge3J9Cj9zZXEgIyBUcnkgUidzIGhlbHAgZm9yIHRoZSBzZXEgZnVuY3Rpb24KICAgICAjIHNlZSB0aGUgSGVscCB0YWIgb24gdGhlIGJvdHRvbS1yaWdodCBwYW5lbApgYGAKCmBgYHtyfQpzZXEoZnJvbT0xLCB0bz0xMCwgYnk9MSkKMToxMApteV9zZXEgPSBzZXEoZnJvbT0xLCB0bz0xMCwgYnk9MSkKYGBgCgpWZWN0b3JzIG9mIEJvb2xlYW4gdmFsdWVzIGFyZSBoZWxwZnVsIGZvciBzZWxlY3Rpbmcgc3Vic2V0cy5cCkJvb2xlYW4gdmVjdG9yIGV4YW1wbGU6IGBjKFRSVUUsIFRSVUUsIEZBTFNFLCBUUlVFKWAKCldlIGNhbiBtYWtlIGEgQm9vbGVhbiB2ZWN0b3IgYnkgdXNpbmcgYSBjb21wYXJpc29uIGV4cHJlc3Npb24gYW5kIGFub3RoZXIgc2VxdWVuY2UuIEZvciBpbnN0YW5jZSwgd2UgbWlnaHQgd2FudCB0byBmaW5kIHRoZSBldmVuIHZhbHVlcyBmcm9tIG15X3NlcSBhYm92ZS4KCmBgYHtyfQpteV9zZXEgJSUgMiA9PSAwICAgICAgICAgICAgICAgICMgd2hpY2ggdmFsdWVzIGluIG15X3NlcSBhcmUgZXZlbj8KbXlfYm9vbF92ZWMgPSBteV9zZXEgJSUgMiA9PSAwICAjIHN0b3JlIHRoZSBCb29sZWFuIHZlY3RvcgpgYGAKClRoZSBCb29sZWFuIHZlY3RvciBjYW4gYmUgdXNlZCB0byBzdWJzZXQgdGhlIG9yaWdpbmFsIHZlY3RvcjoKCmBgYHtyfQpteV9zZXEKbXlfc2VxW215X2Jvb2xfdmVjXQpgYGAKCiMjIE1hdHJpeAoKQSBtYXRyaXggaGFzIHR3byBkaW1lbnNpb25zLCAqcm93cyogYW5kICpjb2x1bW5zKi4KCmBgYHtyfQp2YWxzID0gMTo5CnZhbHMKbWF0MSA9IG1hdHJpeCh2YWxzLCBucm93ID0gMywgYnlyb3cgPSBUUlVFKQptYXQxCmBgYAoKYGBge3J9Cm1hdDFbMSwzXSAgIyBpbmRleCBieSByb3cgYW5kIGNvbHVtbgpgYGAKClIgc3VwcG9ydHMgbWF0cml4IG9wZXJhdGlvbnMuIEZvciBpbnN0YW5jZSwgbXVsdGlwbHlpbmcgYSB2ZWN0b3IgYnkgaXRzIHRyYW5zcG9zZSBjcmVhdGVzIGEgbWF0cml4OgoKYGBge3J9Cm15X3ZlYyA9IGMoOCwgNiwgNywgNSwgMywgMCwgOSkKbXlfbWF0ID0gbXlfdmVjICUqJSB0KG15X3ZlYykKbW9kZShteV9tYXQpCm15X21hdApgYGAKCk1hdHJpY2VzIGFyZSBub3QgbGltaXRlZCB0byBudW1lcmljIHZhbHVlcy4gWW91IGNhbiBtYWtlIGEgY2hhcmFjdGVyIG1hdHJpeCAoaWYgdGhlIG5lZWQgYXJpc2VzKS4KCmBgYHtyfQptYXQyID0gbWF0cml4KGMoJ2EnLCdiJywnYycsJ2QnKSwgbnJvdz0yKQptYXQyCmBgYAoKIyMgU2luZ2xlIHR5cGUgc3VtbWFyeQoKLSAgIGEgc3RhY2sgb2YgdmFsdWVzICRccmlnaHRhcnJvdyQgdmVjdG9yCi0gICBhIHN0YWNrIG9mIHZlY3RvcnMgJFxyaWdodGFycm93JCBtYXRyaXgKLSAgIGEgc3RhY2sgb2YgbWF0cmljZXMgJFxyaWdodGFycm93JCBhcnJheSAobXVsdGlkaW1lbnNpb25hbCBhcnJheSkKCkluIGdlbmVyYWwgYXJyYXlzIGFyZSBoZWxwZnVsIGZvciBwcm9ncmFtbWluZyBSIGFuZCBsZXNzIGNvbW1vbmx5IHVzZWQgZm9yIGRhdGEgYW5hbHlzaXMuIChZb3UgbWlnaHQgcnVuIGludG8gYXJyYXlzIGZvciB0aW1lIHNlcmllcyBhbmFseXNpcykuCgojIE1peGVkIHR5cGUgY29udGFpbmVycwoKTGlzdHMgYW5kIGRhdGEuZnJhbWVzIGFyZSBleHRyZW1lbHkgY29tbW9uIGluIGRhdGEgYW5hbHlzaXMuCgojIyBMaXN0cwoKTGlzdHMgYWxsb3cgbWl4ZWQgdHlwZXMgYW5kIG1pZ2h0IGhvbGQgZGF0YSB2YWx1ZXMgYW5kIGRhdGEgY29udGFpbmVycy4gTGlzdHMgYXJlIGNvbW1vbmx5IHVzZWQgdG8gaG9sZCB0aGUgcmVzdWx0cyBvZiBhIHN0YXRpc3RpY2FsIGFuYWx5c2lzLiBGb3IgZXhhbXBsZSwgZml0dGluZyBhIHJlZ3Jlc3Npb24gbW9kZWwgcmV0dXJucyBhIGxpc3QtbGlrZSBtb2RlbCBvYmplY3QuCgpPbmUgd2F5IHRvIGNyZWF0ZSBhIGxpc3QgaXMgdG8gcGFzcyBhIHNlcmllcyBvZiBhcmd1bWVudHMgdG8gdGhlIGBsaXN0YCBmdW5jdGlvbjoKCmBgYHtyfQpteV9saXN0ID0gbGlzdCgKICAiSSBsaWtlIFIiLAogIGFzLkRhdGUoIjIwMjItMDUtMTYiKSwKICAyMCwKICBjKDgsIDYsIDcsIDUsIDMsIDAsIDkpICAgI25vIGNvbW1hIGFmdGVyIGxhc3QgYXJnIChjZiBweXRob24pCikKbXlfbGlzdApgYGAKCioqQmUgc3VyZSB0byBpbnNwZWN0IHRoZSBsaXN0IG9iamVjdCBpbiB0aGUgRW52aXJvbm1lbnQgdGFiISoqCgpBbHRlcm5hdGl2ZWx5OgoKYGBge3J9CmZvciAoZWxlbSBpbiBteV9saXN0KSB7ICAgICMgZXhhbXBsZSBvZiBmbG93LWNvbnRyb2wgCiAgcHJpbnQoY2xhc3MoZWxlbSkpICAgICAgICMgc2VlIHRoZSBFbnZpcm9ubWVudCB0YWIgYXMgd2VsbAp9CmBgYAoKWW91IGNhbiBhY2Nlc3MgbGlzdCBpdGVtcyBieSBwb3NpdGlvbiB1c2luZyBkb3VibGUgc3F1YXJlIGJyYWNrZXRzOgoKYGBge3J9Cm15X2xpc3RbWzFdXSAgICAgICAgICAjIGZpcnN0IGxpc3QgaXRlbQpteV9saXN0W1s0XV1bMTozXSAgICAgIyBmaXJzdCAzIGVsZW1lbnRzIG9mIGZvdXJ0aCBsaXN0IGl0ZW0KYGBgCgpUaGF0IGlzIGJpdCBvZiBhIG1lc3MsIHNvIGNvbnNpZGVyIG5hbWluZyB5b3VyIGxpc3QgZWxlbWVudHMgZm9yIGVhc2llciBhY2Nlc3M6CgpgYGB7cn0KbXlfbGlzdDIgPSBsaXN0KAogIG1lc3NhZ2UgPSAiSSBsaWtlIFIiLAogIHllc3RlcmRheSA9ICBhcy5EYXRlKCIyMDIyLTA1LTE2IiksCiAgd2lkdGggPSAyMCwKICBteV92ZWMgPSBjKDgsIDYsIDcsIDUsIDMsIDAsIDkpICAjbm8gY29tbWEgYWZ0ZXIgbGFzdCBhcmcgKGNmIHB5dGhvbikKKQpteV9saXN0MgpgYGAKCioqTm90ZSBob3cgdGhpcyBhcHBlYXJzIGluIHRoZSBFbnZpcm9ubWVudCB0YWIqKgoKTm93IHdlIGNhbiB1c2UgdGhlIG5hbWVzIHRvIGFjY2VzcyB0aGUgZWxlbWVudHM6CgpgYGB7cn0KbXlfbGlzdDIkbWVzc2FnZSAgICAgIyAibWVzc2FnZSIgZWxlbWVudApteV9saXN0MiRteV92ZWNbMTozXSAjIGZpcnN0IDMgaXRlbXMgZnJvbSBteV92ZWMgZWxlbWVudApuYW1lcyhteV9saXN0MikKYGBgCgpOYW1pbmcgdGhlIGxpc3QgaXRlbXMgY3JlYXRlcyBhIGRhdGEgc3RydWN0dXJlIGxpa2UgYSBoYXNoIHRhYmxlIG9yIFB5dGhvbiBkaWN0aW9uYXJ5LiBMaXN0cyB3aXRoIG5hbWVkIGVsZW1lbnRzIGFyZSB1c2VkIGZvciBtb2RlbCByZXN1bHRzIGFuZCB5b3UgY2FuIGFjY2VzcyB0aGUgcGFydGljdWxhciBjb21wb25lbnRzIGJ5IG5hbWUgKGUuZy4gbW9kZWxcJHJlc2lkdWFscykuCgojIyBEYXRhIEZyYW1lcwoKVGhlIGRhdGEuZnJhbWUgZmFtaWx5IG9mIGRhdGEgc3RydWN0dXJlcyBpcyB0aGUgZmFtaWxpYXIgZGF0YSBmb3JtYXQgd2l0aCByb3dzIGFzIGNhc2VzIGFuZCBjb2x1bW5zIGFzIHZhcmlhYmxlcy4gSXQgaXMgdGhlIHNhbWUga2luZCBvZiBkYXRhIHRoYXQgd291bGQgYmUgc3RvcmVkIGluIGFuIEV4Y2VsIHNwcmVhZHNoZWV0LCBDU1Ygb3IgUGFuZGFzIERhdGFGcmFtZS4KClRoZSBidWlsdC1pbiBmcmFtZS1saWtlIHN0cnVjdHVyZSBpcyBkYXRhLmZyYW1lLiBUaGVyZSBhcmUgdHdvIGNvbW1vbiB2YXJpYXRpb25zIHlvdSBtaWdodCBlbmNvdW50ZXIgaW4gYWRkLW9uIHBhY2thZ2VzLgoKMS4gIGBkYXRhLnRhYmxlYCAtIGFkZHMgbGFyZ2UgZGF0YSBmZWF0dXJlcyB0byBkYXRhLmZyYW1lCjIuICBgdGliYmxlYCAtIGZyYW1lLWxpa2Ugd2l0aCBzdHJpY3QgY2hlY2tpbmcgKGxlc3MgY29udmVuaWVuY2UgZmVhdHVyZXMsIGxpa2UgcGFydGlhbCBtYXRjaCkKClRoZSBkYXRhLmZyYW1lcyBzeW50YXggaXMgc2ltaWxhciB0byB0aGUgc3ludGF4IGZvciBsaXN0cywgYnV0IGFsbCB0aGUgZWxlbWVudHMgYXJlIHZlY3RvcnMgKGNvbHVtbnMpIGFuZCBtdXN0IGJlIHNhbWUgbGVuZ3RoLgoKVGhpcyBjaHVuayBjcmVhdGVzIGEgZGF0YS5mcmFtZSB3aXRoIHRocmVlIGNvbHVtbnMgKGlkLCBhZ2UsIGhlaWdodCk6CgpgYGB7ciBwYWdlZC5wcmludD1GQUxTRX0KbXlfZGYgPSBkYXRhLmZyYW1lKAogIGlkID0gMTo5LAogIGFnZSA9IHJvdW5kKHJ1bmlmKDksIDgsIDEyKSksCiAgaGVpZ2h0ID0gcm91bmQocnVuaWYoOSwgMzgsIDYwKSwgMSkKKQpteV9kZgpgYGAKCioqQ2hlY2sgRW52aXJvbm1lbnQgdGFiIGFuZCB1c2UgdGhlIHByZXZpZXcuKioKClJvd3MgYXJlIGluZGV4ZWQgYW5kIGNvbHVtbnMgYXJlIG5hbWVkIChhbmQgaW5kZXhlZCk6CgpgYGB7ciBwYWdlZC5wcmludD1GQUxTRX0KbXlfZGZbMSxdICAgICNmaXJzdCByb3cKbXlfZGYkYWdlICAgICNjb2x1bW4gImFnZSIKYGBgCgpKdXN0IGRlY2xhcmUgbmV3IGNvbHVtbnMgdG8gY3JlYXRpbmcgdGhlbToKCmBgYHtyfQpteV9kZiRncmFkZSA9ICIzcmQiICAgIyBzaW5nbGUgdmFsdWUgYnJvYWRjYXN0IHRvIHdob2xlIGNvbHVtbgpteV9kZgpteV9kZiRncmFkZVs1OjldID0gIjR0aCIgIyBzaW5nbGUgdmFsdWUgYnJvYWRjYXN0IHRvIHN1YnNldApteV9kZgpgYGAKClRoZXJlIGFyZSBtYW55IGZ1bmN0aW9ucyB0aGF0IG9wZXJhdGUgb24gZGF0YS5mcmFtZXMuIEZvciBpbnN0YW5jZToKCmBgYHtyfQpzdW1tYXJ5KG15X2RmKQpgYGAKClRoZSBzdW1tYXJ5IGZvciBncmFkZSBpcyBkaXNhcHBvaW50aW5nLiBXZSBzaG91bGQgbWFrZSB0aGlzIGEgZmFjdG9yLCBzbyBpdCBpcyB0cmVhdGVkIGFzIGEgY2F0ZWdvcmljYWwgdmFyaWFibGUuCgpgYGB7cn0KbXlfZGYkZ3JhZGUgPSBhcy5mYWN0b3IobXlfZGYkZ3JhZGUpCnN1bW1hcnkobXlfZGYpCmBgYAoKTm93IHRoZSBzdW1tYXJ5IGlzIG1vcmUgdXNlZnVsLiBEYXRhIHR5cGVzIG1hdHRlciEKCkEgZmV3IG90aGVyIGZ1bmN0aW9uczoKCmBgYHtyIHBhZ2VkLnByaW50PUZBTFNFfQpoZWFkKG15X2RmKSAgICAgIyBzaG93IHRoZSBmaXJzdCA2IHJvd3Mgb2YgdGhlIGRhdGEgZnJhbWUKICAgICAgICAgICAgICAgICMgKGdvb2QgZm9yIGxhcmdlIGRhdGEgZnJhbWVzKQptZWFuKG15X2RmJGFnZSkgIyBjb21wdXRlIG1lYW4gb2YgYSBjb2x1bW4Kc2QobXlfZGYkYWdlKSAgICMgY29tcHV0ZSBzdGFuZGFyZCBkZXZpYXRpb24gb2YgYSBjb2x1bW4KYGBgCgojIFN1bW1hcnkKCklmIHlvdSB1bmRlcnN0YW5kIHRoZSBzZW1hbnRpY3MgZm9yIGZ1bmN0aW9ucywgbGlzdHMsIGRhdGEuZnJhbWVzIGFuZCB2ZWN0b3JzLCB5b3Ugd2lsbCBiZSBlcXVpcHBlZCB0byB1bmRlcnN0YW5kIG1vc3Qgb2YgdGhlIGV4YW1wbGVzIHlvdSBlbmNvdW50ZXIuIFVzZSB0aGUgaGVscCB0YWIgdG8gbG9vayB1cCB0aGUgZG9jdW1lbnRhdGlvbiBhbmQgZXhhbXBsZXMgZm9yIGZ1bmN0aW9uIGNhbGxzLgo=</div>
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiMjAgTWludXRlcyB0byBSIgpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sKLS0tCgojIFIgTm90ZWJvb2sKCiMjIFIgbm90ZWJvb2sgc3VwcG9ydHMgKmxpdGVyYXRlIGFuYWx5c2lzKgoKSW4gKmxpdGVyYXRlIHN0YXRpc3RpY2FsIGFuYWx5c2lzKiwgKipkb2N1bWVudGF0aW9uKiosICoqc3BlY2lmaWNhdGlvbioqLCAqKmV4cGxhbmF0aW9uKiosICoqaW50ZXJwcmV0YXRpb24sKiogYW5kICoqY29kZSoqIGNvLWV4aXN0IGluIGEgc2luZ2xlIGRvY3VtZW50IHRoYXQgcHJlc2VudHMgdGhlIGFuYWx5c2lzIHByb2Nlc3MgaW4gYSBuYXJyYXRpdmUgZm9ybWF0LgoKSW4gY29udHJhc3QgdG8gc2NyaXB0cywgd2hlcmUgY29kZSBpcyB0aGUgZGVmYXVsdCBraW5kIG9mIGNvbnRlbnQgYW5kIGV2ZXJ5dGhpbmcgZWxzZSBtdXN0IGJlIHNob2UtaG9ybmVkIGludG8gY29tbWVudHMsIHRoZSBkZWZhdWx0IG5vdGVib29rIGNvbnRlbnQgaXMgdGV4dC4KCi0gICBDb2RlIGFuZCByZXN1bHRzIGFwcGVhciBpbiBzcGVjaWFsbHkgZGVzaWduYXRlZCBjb250ZW50IGJsb2Nrcy4KCi0gICBUZXh0IGJsb2NrcyBzdXBwb3J0IGEgcmFuZ2Ugb2YgZm9ybWF0dGluZyBvcHRpb25zIHZpYSBbUiBNYXJrZG93bl0oaHR0cHM6Ly9ybWFya2Rvd24ucnN0dWRpby5jb20vbGVzc29uLTEuaHRtbCkKCiMjIyBSIE1hcmtkb3duCgpBbHRlcm5hdGl2ZWx5LCB1c2UgdGhlICoqKlZpc3VhbCoqKiBlZGl0b3IgbW9kZSB0byBpbnNlcnQgdGhlc2UgZm9ybWF0cyBpbnRvIHRoZSBkb2N1bWVudC4KCltRdWljayBvdmVydmlldyBvZiBmb3JtYXR0aW5nXShodHRwczovL3JtYXJrZG93bi5yc3R1ZGlvLmNvbS9sZXNzb24tOC5odG1sKSBvcHRpb25zLCBpbmNsdWRpbmc6CgotICAgKml0YWxpY3MqCi0gICAqKmJvbGQqKgotICAgYGNvZGVgCi0gICBbbGlua3NdKHJtYXJrZG93bi5yc3R1ZGlvLmNvbSkKLSAgIGV0Yy4KCkJ1dCBkaWQgeW91IGtub3cgdGhhdCB5b3UgY2FuIGFsc28gdXNlIFIgTWFya2Rvd24ncyBtYXJrZG93biB0byBtYWtlCgotICAgTGFUZVggZXF1YXRpb25zLCAkRSA9IG1jXnsyfSQKLSAgIEFuZCBiaWJsaW9ncmFwaGllcyBbQHJtYXJrZG93bjE1XS4KCj4gXGBcYFxgIHs9fSBNYXJrZG93biBwcm92aWRlcyBhbiBlYXN5IHdheSB0byBtYWtlIHN0YW5kYXJkIHR5cGVzIG9mIGZvcm1hdHRlZCB0ZXh0LCBsaWtlCj4KPiAtICAgKml0YWxpY3MqCj4gLSAgICoqYm9sZCoqCj4gLSAgIGBjb2RlYAo+IC0gICBbbGlua3NdKHJtYXJrZG93bi5yc3R1ZGlvLmNvbSkKPiAtICAgZXRjLgo+Cj4gQnV0IGRpZCB5b3Uga25vdyB0aGF0IHlvdSBjYW4gYWxzbyB1c2UgUiBNYXJrZG93bidzIG1hcmtkb3duIHRvIG1ha2UKPgo+IC0gICBMYVRlWCBlcXVhdGlvbnMsICRFID0gbWNeezJ9JAo+IC0gICBBbmQgYmlibGlvZ3JhcGhpZXMgW0BybWFya2Rvd24xNV0uIFxgXGBcYAoKTWFya2Rvd24gYWxzbyBzdXBwb3J0cyBhIGhpZXJhcmNoeSBvZiBoZWFkaW5ncyB0byBvcmdhbml6ZSB5b3VyIGRvY3VtZW50LiBUaGUgKipPdXRsaW5lKiogdG8gdGhlIHJpZ2h0IGlzIGdlbmVyYXRlZCBhdXRvbWF0aWNhbGx5IGJ5IHRoZSBoZWFkaW5ncyBpbiB0aGUgZG9jdW1lbnQuICoqSW4gbWFya2Rvd24gZG9jdW1lbnRzLCBgI2AgaXMgZm9yIGhlYWRpbmdzLCBub3QgY29tbWVudHMhKioKCmB7PX0gIyBIMSBoZWFkaW5nICh0b3AgbGV2ZWwgaGVhZGVyKSAjIyBIMiAjIyMgSDMgLi4uICMjIyMjIyBINiAoZGVlcGVzdCBsZXZlbCBoZWFkZXIpYAoKIyMgUiBOb3RlYm9vayBHb3RjaGFzOgoKLSAgIFRoZSBjb2RlIHlvdSBydW4gaW4gUiBOb3RlYm9vayBpcyBydW5uaW5nIGluIHRoZSBhbiBSIGNvbnNvbGUgc2Vzc2lvbi4gRWFjaCBjZWxsIGV4ZWN1dGlvbiBjYW4gcG90ZW50aWFsbHkgY2hhbmdlIHRoZSB2YWx1ZXMgYXNzaWduZWQgdG8gdmFyaWFibGVzLiBPcmRlciBtYXR0ZXJzCgotICAgQmVjYXVzZSB5b3UgY2FuIHNraXAgYXJvdW5kIHVzaW5nIHRoZSBvdXRsaW5lLCBpdCBpcyBlYXN5IHRvIGNyZWF0ZSB5b3VyIG5vdGVib29rIGluIGEgbm9uLWxpbmVhciB3YXkuIFdoZW4gYXV0aG9yaW5nLCB5b3UgbWlnaHQgcnVuIHNvbWUgY2VsbHMgbW9yZSB0aGFuIG9uY2Ugb3IgcnVuIGNlbGxzIG91dCBvZiBvcmRlci4KCi0gICBEaXNjaXBsaW5lIHlvdXJzZWxmIHRvIG1ha2Ugbm90ZWJvb2tzIHRoYXQgcHJvZHVjZSBjb3JyZWN0IHJlc3VsdHMgd2hlbiBleGVjdXRlZCBsaW5lYXJseSB1c2luZyB0aGUgYFJ1biBBbGxgIGNvbW1hbmQuCgotLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0KCiMgUiBhcyBhIGNhbGN1bGF0b3IKCldlIHNhdyB0aGlzIGNvbnRlbnQgYWxyZWFkeSwgaW4gdGhlIGZvcm0gb2YgY29tbWVudHMgaW4gYW4gUiBzY3JpcHQgZmlsZS4gVGhlIHRleHQgZm9ybWF0dGluZyBvcHRpb25zIGluIFIgTm90ZWJvb2sgbWFrZSBjb21tdW5pY2F0aW9uIG1vcmUgZWZmZWN0aXZlIGFuZCB2aXN1YWxseSBpbnRlcmVzdGluZy4KCiMjIE9wZXJhdG9ycwoKLSAgIGArYCBhZGRpdGlvbgotICAgYC1gIHN1YnRyYWN0aW9uCi0gICBgKmAgbXVsdGlwbGljYXRpb24KLSAgIGAvYCBkaXZpc2lvbgotICAgYF5gIG9yIGAqKmAgZXhwb25lbnRpYXRpb24KLSAgIHggYCUlYCB5IG1vZHVsdXMKLSAgIHggYCUvJWAgeSBpbnRlZ2VyIGRpdmlzaW9uCgojIyBMb2dpY2FsIE9wZXJhdG9ycwoKLSAgIGA8YCBsZXNzIHRoYW4KLSAgIGA8PWAgbGVzcyB0aGFuIG9yIGVxdWFsIHRvCi0gICBgPmAgZ3JlYXRlciB0aGFuCi0gICBgPj1gIGdyZWF0ZXIgdGhhbiBvciBlcXVhbCB0bwotICAgYD09YCBlcXVhbHMgKGNvbXBhcmlzb24pCi0gICBgIT1gIG5vdCBlcXVhbAotICAgYCF4YCBub3QgeAotICAgYHggfHwgeWAgeCBvciB5IChyZXR1cm5zIFRSVUUgb3IgRkFMU0UsIHVzZSBpbiBpZiBjb25kaXRpb25zKQotICAgYHggJiYgeWAgeCBhbmQgeSAocmV0dXJucyBUUlVFIG9yIEZBTFNFLCB1c2UgaW4gaWYgY29uZGl0aW9ucykKLSAgIGB4IHwgeWAgeCBPUiB5IChjb21wYXJlcyBiaXR3aXNlLCBzbyBpdCBwb3RlbnRpYWxseSByZXR1cm5zIGEgdmVjdG9yKQotICAgYHggJiB5YCB4IEFORCB5IChjb21wYXJlcyBiaXR3aXNlLCBzbyBpdCBwb3RlbnRpYWxseSByZXR1cm5zIGEgdmVjdG9yKQoKc2VlIGA/YmFzZTo6TG9naWNgIGZvciBkZXRhaWxzLgoKIyMjIyBUcnkgaXQ6CgpXZSBjYW4gdHJ5IHRoZSBjb2RlIHJpZ2h0IGluIHRoZSBub3RlYm9vay4gVGhpcyBpcyBhbiBSIGNvZGUgY2h1bmsgKG5vdGUgdGhhdCBpdCBzdGFydHMgd2l0aCBge3J9YCApLgoKUnVuIHRoaXMgY2h1bmsgYnkgY2xpY2tpbmcgaXRzICpSdW4qIGJ1dHRvbiAoZ3JlZW4gcmlnaHQgYXJyb3doZWFkIOKWtu+4jyApIG9yIGJ5IGNsaWNraW5nIGluc2lkZSB0aGUgYmxvY2sgYW5kIHByZXNzaW5nICpDbWQrU2hpZnQrRW50ZXIgKG1hY09TKSBvciogKkN0cmwrU2hpZnQrRW50ZXIqIChXaW5kb3dzKS4KCmBgYHtyfQoyICsgMgpgYGAKCmBgYHtyfQozID4gNCAKYGBgCgpgYGB7cn0KYyhUUlVFLCBGQUxTRSwgVFJVRSwgRkFMU0UpICYgYyhUUlVFLCBUUlVFLCBGQUxTRSwgRkFMU0UpCmBgYAoKYGBge3J9CmlmICggKDMgPCA0KSAmJiAoJ2FhJyA8ICdhYicpICl7CiAgcHJpbnQoIlRydWUiKQp9IGVsc2UgewogIHByaW50KCJGYWxzZSIpCn0KYGBgCgoqKkNvbnNvbGUgcmVzdWx0cyBhcHBlYXIgcmlnaHQgYmVsb3cgdGhlIGNvZGUgY2VsbHMgd2l0aGluIHRoZSBkb2N1bWVudC4qKgoKLSAgICoqTm8gbmVlZCB0byBrZWVwIGNvbnNvbGUgb3BlbioqCgojIyBNYXRoIGFuZCBTdGF0cyBmdW5jdGlvbnMgLyBjb25zdGFudHMKCi0gICBgbG9nKHgpYCBuYXR1cmFsIGxvZyBvciBpbiBzcGVjaWZpZWQgYmFzZQotICAgYGV4cCh4KWAgZXhwb25lbnRpYWwKLSAgIGBwaWAgdmFsdWUgb2YgcGkKLSAgIGBtZWFuKHgpYCBtZWFuCi0gICBgdmFyKHgpYCB2YXJpYW5jZQotICAgYHNkKHgpYCBzdGFuZGFyZCBkZXZpYXRpb24KLSAgIC4uLiBhbmQgbWFueSBtb3JlCgojIyMjIE5vdGUgYWJvdXQgZnVuY3Rpb25zCgoqKllvdSBkb24ndCBuZWVkIHRvIHByb2dyYW0gZnVuY3Rpb25zIHRvIHVzZSBSLCBidXQgeW91IGRvIG5lZWQgdG8gY2FsbCBmdW5jdGlvbnMhKiogQXBwbHlpbmcgZnVuY3Rpb25zIHRvIGRhdGEgaXMgdGhlIGZ1bmRhbWVudGFsIGJ1aWxkaW5nIGJsb2NrIG9mIHN0YXRpc3RpY2FsIGFuYWx5c2lzIGluIFIuCgpJbiBwcm9ncmFtbWluZywgYSBmdW5jdGlvbiB0YWtlcyBpbnB1dCBhbmQgcmV0dXJucyBhbiBvdXRwdXQuIEluIFIsIHRoZSBjb252ZW50aW9uIGZvciBjYWxsaW5nIGEgZnVuY3Rpb24gaXMgdG8gd3JpdGUgdGhlIGZ1bmN0aW9uIG5hbWUgZm9sbG93ZWQgYnkgYSBwYWlyIG9mIHBhcmVudGhlc2lzLiBUaGUgZnVuY3Rpb24gYXJndW1lbnRzIGFwcGVhciB3aXRoIHRoZSBwYXJlbnRoZXNpczoKCmBuYW1lKGFyZ3VtZW50KWAKCklmIHRoZSBmdW5jdGlvbiBhY2NlcHRzIG11bHRpcGxlIGFyZ3VtZW50cywgc2VwYXJhdGUgdGhlIGFyZ3VtZW50cyB3aXRoIGEgY29tbWE6CgpgbmFtZShhcmd1bWVudDEsIGFyZ3VtZW50MilgCgpgYGB7cn0KbG9nKDEwKSAgICAgICAgIyBuYXR1cmFsIGxvZyBvZiAxMApsb2coMTAsIDEwKSAgICAjIHdoYXQgZG8geW91IGV4cGVjdCB0aGlzIGRvZXM/CmBgYAoKYGBge3J9Cj9sb2cgICAgICAgICAgICMgbGV0cyBjaGVjayB0aGUgZG9jcyAoY2xpY2sgdGhlIGhlbHAgdGFiKQpgYGAKClNvbWUgZnVuY3Rpb25zIHVzZSBuYW1lZCBhcmd1bWVudHMuIFJlZmVyIHRoZSB0byBkb2N1bWVudGF0aW9uIGZvciB0aGUgZnVuY3Rpb24gdG8gbGVhcm4gdGhlIGFyZ3VtZW50IG5hbWVzLiBVc2UgdGhlIG5hbWVzIHdoZW5ldmVyIHlvdSBjYW4gdG8gbWFrZSB0aGUgbWVhbmluZyBvZiB5b3VyIGNvZGUgbW9yZSBjbGVhci4gSW5zaWRlIGEgZnVuY3Rpb24gY2FsbCwgeW91IHNob3VsZCB1c2UgdGhlIGA9YCBzaWduIHRvIGF0dGFjaCBhIHZhbHVlIHRvIGFuIGFyZ3VtZW50IG5hbWUuCgpgYGB7cn0KbG9nKDEwLCBiYXNlPTEwKSAgICAjIHVzaW5nIHRoZSBuYW1lZCBhcmd1bWVudHMgbWFrZXMgdGhlIG1lYW5pbmcgY2xlYXIuCmBgYAoKLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tCgojIFZhcmlhYmxlcwoKVmFyaWFibGVzIGFyZSB1c2VkIHRvIHN0b3JlIGFuZCB1c2UgdmFsdWVzLgoKWW91IGNob29zZSB0aGUgdmFyaWFibGUgbmFtZSwgYnV0IGJlIGNhcmVmdWw6CgotICAgSWYgdGhlIHZhcmlhYmxlIG5hbWUgaXMgdGhlIHNhbWUgYXMgYSBmdW5jdGlvbiB5b3Ugd2hhdCB0byB1c2UsIHlvdXIgY29kZSBtYXkgYmUgaGFyZCB0byByZWFkLiBSIHdpbGwgbW9zdGx5IGJlIGFibGUgdG8ga2VlcCB0cmFjayBvZiB2YXJpYWJsZSB2cyBmdW5jdGlvbiBuYW1lcy4KCi0gICBUaGVyZSBhcmUgYSBzbWFsbCBudW1iZXIgb2YgcmVzZXJ2ZWQgbmFtZXMgdGhhdCBjYW5ub3QgYmUgdXNlZCBhcyB2YXJpYWJsZSBuYW1lcy4gU2VlIGA/YmFzZTo6cmVzZXJ2ZWRgCgpTdXBwb3NlIHdlIG5lZWQgdG8gc3RvcmUgdGhlIG1lYXN1cmVtZW50IGZvciBhbiBvYmplY3QncyB3aWR0aC4gV2UgbWlnaHQgY3JlYXRlIGEgdmFyaWFibGUgdG8gaG9sZCB0aGUgdmFsdWUuICoqV2UgY2FuIHVzZSBhIHNpbmdsZSBgPWAgb3IgYSBgPC1gIHRvIGFzc2lnbiBhIHZhbHVlIHRvIHZhcmlhYmxlIG5hbWUuKiogVGhlIGA8LWAgZm9yIGFzc2lnbm1lbnQgY29tZXMgZnJvbSB0aGUgQVBMIGxhbmd1YWdlIHdoaWNoIHVzZWQgYSBzcGVjaWFsIGtleWJvYXJkIGZvciBzeW1ib2xzLiBUaGVzZSBrZXlib2FyZHMgaGF2ZW4ndCBiZWVuIG1hZGUgc2luY2UgdGhlIDgwJ3MgYnV0IHRoZSBjb252ZW50aW9uIGxpdmVzIG9uLiBZb3Ugd2lsbCBzZWUgYm90aCBzdHlsZXMgb2YgYXNzaWdubWVudCwgc29tZXRpbWVzIHdpdGhpbiBhIHNpbmdsZSBkb2N1bWVudCEKCmBgYHtyfQp3aWR0aCA9IDIwICAgICAjIGRvZXMgbm90IHByaW50IGFueXRoaW5nICh0cnkgbHMoKSBvciBvYmplY3RzKCkpCmBgYAoKSW4gY29udHJhc3QgdG8gb3RoZXIgc3RhdGlzdGljYWwgc29mdHdhcmUsIFIgZG9lcyBub3QgcHJpbnQgcmVzdWx0cyBhZnRlciBydW5uaW5nIGNvbW1hbmRzLiBJbnN0ZWFkLCBSIGNyZWF0ZXMgb2JqZWN0cyBpbiBtZW1vcnkgZm9yIHlvdSB0byB1c2UuIFRoaXMgY2FuIGZlZWwgbGlrZSBSIGlzIG5vdCAqZG9pbmcqIGFueXRoaW5nLCB1bmxlc3MgeW91IGtub3cgd2hlcmUgdG8gbG9vay4gQ2xpY2sgdGhlIEVudmlyb25tZW50IHRhYiAocHJvYmFibHkgaW4gdGhlIHVwcGVyIHJpZ2h0IHBhbmUpIGFuZCBub3RlIGhvdyB0aGUgZW52aXJvbm1lbnQgY2hhbmdlcyBhcyB5b3UgZXhlY3V0ZSBlYWNoIGNvbW1hbmQuCgpgYGB7cn0Kd2lkdGggICAgICAgICAgIyBidXQgdmFyaWFibGUgd2FzIGNyZWF0ZWQgKHNlZSBFbnZpcm9ubWVudCB0YWIpCmBgYAoKVmFyaWFibGVzIGNhbiBob2xkIHRoZSByZXN1bHRzIG9mIGEgY29tcHV0YXRpb24gYXMgd2VsbC4KCmBgYHtyfQpoZWlnaHQgPSA1ICogOQpgYGAKCmBgYHtyfQp3aWR0aCAqIGhlaWdodCAjIHNhbWUgYXMgMjAgKiA0NQpgYGAKClN1cHBvc2Ugd2UgbWFrZSBhIG1pc3Rha2U6CgpgYGB7cn0KbHMoKSAjIHNob3cgdGhlIG9iamVjdHMgaW4gbWVtb3J5CndpZGl0aCA8LSAxMCAjb29wcywgbWlzc3BlbGxlZCAid2lkdGgiIApscygpCmBgYAoKV2UgZG9uJ3QgaGF2ZSB0byBsaXZlIHdpdGggaXQuIE9iamVjdHMgY2FuIGJlIHJlbW92ZWQgdXNpbmcgdGhlIHJtKCkgZnVuY3Rpb24uCgpgYGB7cn0Kcm0od2lkaXRoKQpscygpCmBgYAoKLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tCgojIERhdGEgdHlwZXMKCkRhdGEgdHlwZXMgYXJlIGEgd2F5IHRvIG1vZGVsIHRoZSBkaWZmZXJlbnQga2luZHMgb2YgZGF0YSB3ZSBlbmNvdW50ZXIgZXZlcnkgZGF5IGluIG91ciB3b3JrLiBNb3N0IGRhdGEgdXNlZCBmb3Igc3RhdGlzdGljYWwgYW5hbHlzaXMgaXMgcHJvYmFibHkgbnVtZXJpYywgYnV0IG91ciBkYXRhIGFsc28gY29udGFpbiBpbmZvcm1hdGlvbiBsaWtlIG5hbWVzLCB0aGF0IGFyZSAqKnN0cmluZ3MqKiBvZiBsZXR0ZXJzLiBXZSBtaWdodCBoYXZlIGluZGljYXRvciB2YXJpYWJsZXMgdGhhdCBjYW4gYmUgZWl0aGVyICoqdHJ1ZSBvciBmYWxzZSoqLiBTb21lIG9mIHRoZSBzdHJpbmctbGlrZSBkYXRhIHJlcHJlc2VudCBzcGVjaWFsIGtpbmRzIG9mIGRhdGEsIGxpa2UgZGF0ZXMsIHRpbWVzIG9yIGxldmVscyBvZiBhIGNhdGVnb3JpY2FsIHZhcmlhYmxlLgoKSXQgaXMgaW1wb3J0YW50IHRvIG1ha2Ugc3VyZSB0aGF0IHlvdXIgZGF0YSBpcyByZXByZXNlbnRlZCBieSB0aGUgY29ycmVjdCBSIGRhdGEgdHlwZSBiZWNhdXNlIGRhdGEgdHlwZSBkZXRlcm1pbmVzIGhvdyBSIGNhbiB1c2UgdGhlIHZhbHVlcy4KCioqTW9zdCBjb21tb24gZGF0YSB0eXBlcyoqCgorLS0tLS0tLS0tLS0tKy0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLSsKfCBUeXBlICAgICAgIHwgRGVzY3JpcHRpb24gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB8Cis9PT09PT09PT09PTorPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09Kwp8IG51bWVyaWMgICAgfCAzLCA1LjIsIGV0YyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwKKy0tLS0tLS0tLS0tLSstLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0rCnwgQm9vbGVhbiAgICB8IFRSVUUsIEZBTFNFICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgfAorLS0tLS0tLS0tLS0tKy0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLSsKfCBjaGFyYWN0ZXIgIHwgKGkuZS4gc3RyaW5nKSAiY2F0IiwgImRvZyIgICAgICAgICAgICAgICAgICAgICAgICAgICB8CistLS0tLS0tLS0tLS0rLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tKwp8IGZhY3RvciAgICAgfCBjYXRlZ29yaWNhbCB2YXJpYWJsZSAtXCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwKfCAgICAgICAgICAgIHwgZGF0YSB2YWx1ZSBpcyBvbmUgb2YgYSBzbWFsbCBzZXQgb2YgcG9zc2libGUgdmFsdWVzLiB8CistLS0tLS0tLS0tLS0rLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tKwp8IGRhdGVbdGltZV0gfCByZXByZXNlbnRzIGEgZGF0ZSBvciBzcGVjaWZpYyBkYXRlIGFuZCB0aW1lLiAgICAgICAgIHwKKy0tLS0tLS0tLS0tLSstLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0rCgpgYGAgICAgICAgICAKNSAgICAgICAgICAgIyBudW1lcmljClRSVUUgICAgICAgICMgQm9vbGVhbiAvIExvZ2ljYWwgCgoiSSBsaWtlIFIiICAjIGNoYXJhY3RlcihzKSAvIHN0cmluZwonSSBsaWtlIFInICAjIHNpbmdsZSBvciBkb3VibGUgcXVvdGVzCmBgYAoKRGF0YSB0eXBlIGRldGVybWluZXMgd2hhdCB5b3UgY2FuIGRvIHdpdGggdGhlIGRhdGE6CgpgYGB7cn0KNSAqIDIgIyBwZXJmZWN0bHkgc2Vuc2libGUKYGBgCgpgYGB7cn0KIkkgbGlrZSBSIiAqIDIgICMgbm9uc2Vuc2ljYWwKYGBgCgpQeXRob24gc3R5bGUgY29uY2F0IGRvZXMgbm90IHdvcms6IGAiSSIgKyAibGlrZSIgKyAiUiJgCgpPbiB0aGUgb3RoZXIgaGFuZCwgc3RyaW5nIGZ1bmN0aW9ucyBhbmQgY29tcGFyaXNvbiBvcGVyYXRvcnMgZG8gd29yayB3aXRoIHN0cmluZ3MuCgpgYGB7cn0KcGFzdGUoIkkiLCAibGlrZSIsICJSIikKImFhIiA8ICJhYiIKImNjIiA+ICJjZCIKYGBgCgpgYGB7cn0KdGhpc19kYXkgPSBhcy5EYXRlKCIyMDIyLTA1LTE3IikKeWVzdGVyZGF5ID0gIGFzLkRhdGUoIjIwMjItMDUtMTYiKQp0aGlzX2RheQp5ZXN0ZXJkYXkKdGhpc19kYXkgPCB5ZXN0ZXJkYXkgICM/IFdhcyB0b2RheSBiZWZvcmUgeWVzdGVyZGF5PwogICAgICAgICAgICAgICAgICAgICAgIyBXaHkgZGlkIHVzICJ0aGlzX2RheSIgZm9yIHRvZGF5PyAobmFtZXNwYWNlKQogICAgICAgICAgICAgICAgICAgICAgIyBXaWxsIGRpc2N1c3MgaW4gcGFpbiBwb2ludHMgc2VjdGlvbnMKZm9ybWF0KGFzLkRhdGUoIjIwMjItMDUtMTciKSwgJyVBICVCICVkICVZJykgICNQT1NJWCAgZGF0ZSBmb3JtYXR0aW5nCmBgYAoKLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tCgojIERhdGEgQ29udGFpbmVycyAoT2JqZWN0cykKCkRhdGEgdmFsdWVzIG1vcmUgdXNlZnVsIHdoZW4gc3RvcmVkIGFzIGEgY29sbGVjdGlvbiBpbiBhIGNvbnRhaW5lci4gV2UgZG9uJ3Qgd2FudCB0byBzdG9yZSB0aGUgZWFjaCBjZWxsIGluIG91ciBkYXRhIHRhYmxlIHVuZGVyIGEgZGlmZmVyZW50IG5hbWUhCgpSIGhhcyB0d28gdHlwZXMgb2YgZGF0YSBjb250YWluZXJzOyBjb250YWluZXJzIHRoYXQgaG9sZCBjb2xsZWN0aW9ucyBvZiBzYW1lLXR5cGUgdmFsdWVzIGFuZCB0aG9zZSB0aGF0IGNhbiBob2xkIG1peGVkIHR5cGVzLgoKKipTaW5nbGUgVHlwZSBDb250YWluZXJzKioKCi0gICB2ZWN0b3IgdltpXQotICAgbWF0cml4IG1baSxrXQotICAgYXJyYXkgYVtpLGosaywuLi4uLl0KCioqTXVsdGktdHlwZSBDb250YWluZXJzKioKCi0gICBMaXN0cwotICAgRGF0YSBGcmFtZXMKCllvdSBjYW4gY29udmVydCBiZXR3ZWVuIGNvbXBhdGlibGUgY29udGFpbmVycyB1c2luZyBgYXMuKigpYCBtZXRob2RzIChhcy5saXN0KCksIGFzLmRhdGEuZnJhbWUoKSkuIEZvciBpbnN0YW5jZSwgeW91IG1pZ2h0IGNvbnZlcnQgYSBtYXRyaXggYG1gIHRvIGEgZGF0YS5mcmFtZSB1c2luZyBgYXMuZGF0YS5mcmFtZShtKWAuCgojIyBWZWN0b3IKCkEgdmVjdG9yIGlzIGxpa2UgYSBjb2x1bW4gZnJvbSBhIGRhdGEgdGFibGUuIEl0IGhhcyBvbmUgZGltZW5zaW9uIChsZW5ndGgpIGFuZCBhbGwgdGhlIGVsZW1lbnRzIGluIHRoZSB2ZWN0b3IgYXJlIG9mIHRoZSBzYW1lIGtpbmQuCgpgYGB7ciBlY2hvPUZBTFNFfQpteV92ZWMgPSBjKDgsIDYsIDcsIDUsIDMsIDAsIDkpCm15X3ZlYwpgYGAKClRoZSBmaXJzdCBlbGVtZW50IGlzIGF0IGluZGV4IDEuIExhc3QgZWxlbWVudCBpcyBhdCBsZW5ndGgobXlfdmVjKQoKYGBge3J9Cm15X3ZlY1sxXSAgICMgdXNlIHNxdWFyZSBicmFja2V0IHRvIGdldCBhbiBpdGVtIGZyb20gdmVjdG9yCmxlbmd0aChteV92ZWMpICAgIyBsZW5ndGggaXMgNwpteV92ZWNbN10KbXlfdmVjWzE6M10gICMgcmFuZ2VzIGFyZSBpbmNsdXNpdmUKYGBgCgpNb3N0IFIgb3BlcmF0b3JzIGFuZCBmdW5jdGlvbnMgc3VwcG9ydCB2ZWN0b3IgaW5wdXQKCmBgYHtyfQpteV92ZWNeMgpteV92ZWMgKyBteV92ZWMKbXlfdmVjICogbXlfdmVjICAgIyBwYWlyd2lzZSwgdmVjdG9yIG11bHRpcGxpY2F0aW9uCmBgYAoKKipDYXV0aW9uOioqIElmIHlvdSBhc2sgUiB0byBtYWtlIGEgdmVjdG9yIG9mIG1peGVkIHR5cGVzLCBSIGF1dG9tYXRpY2FsbHkgKGFuZCBzaWxlbnRseSkgZmluZHMgYSBjb21tb24gZGF0YSB0eXBlLiBUaGlzIG1pZ2h0IG5vdCBiZSB0aGUgdHlwZSB5b3Ugd291bGQgaGF2ZSBzZWxlY3RlZC4KCipBIHN0cmluZywgYSBCb29sZWFuIGFuZCBhbiBpbnRlZ2VyIGdvIGludG8gYSB2ZWN0b3IuLi4qCgpgYGB7cn0KbWl4ZWQgPSBjKCJSIiwgVFJVRSwgMTApCm1vZGUobWl4ZWQpCm1peGVkICMgZXZlcnl0aGluZyBpcyBzdHJpbmchCmBgYAoKYGBge3J9Cm1peGVkMiA9YygxLCAyLCAzLCBUUlVFKQptb2RlKG1peGVkMikKbWl4ZWQyICMgQm9vbGVhbiBpcyBub3cgYW4gaW50ISAjIGFzLmxvZ2ljYWwoMSkgPT0gVFJVRQpgYGAKClIgaW5jbHVkZXMgbWFueSBmdW5jdGlvbnMgdG8gbWFrZSBzZXF1ZW5jZXMKCmBgYHtyfQo/c2VxICMgVHJ5IFIncyBoZWxwIGZvciB0aGUgc2VxIGZ1bmN0aW9uCiAgICAgIyBzZWUgdGhlIEhlbHAgdGFiIG9uIHRoZSBib3R0b20tcmlnaHQgcGFuZWwKYGBgCgpgYGB7cn0Kc2VxKGZyb209MSwgdG89MTAsIGJ5PTEpCjE6MTAKbXlfc2VxID0gc2VxKGZyb209MSwgdG89MTAsIGJ5PTEpCmBgYAoKVmVjdG9ycyBvZiBCb29sZWFuIHZhbHVlcyBhcmUgaGVscGZ1bCBmb3Igc2VsZWN0aW5nIHN1YnNldHMuXApCb29sZWFuIHZlY3RvciBleGFtcGxlOiBgYyhUUlVFLCBUUlVFLCBGQUxTRSwgVFJVRSlgCgpXZSBjYW4gbWFrZSBhIEJvb2xlYW4gdmVjdG9yIGJ5IHVzaW5nIGEgY29tcGFyaXNvbiBleHByZXNzaW9uIGFuZCBhbm90aGVyIHNlcXVlbmNlLiBGb3IgaW5zdGFuY2UsIHdlIG1pZ2h0IHdhbnQgdG8gZmluZCB0aGUgZXZlbiB2YWx1ZXMgZnJvbSBteV9zZXEgYWJvdmUuCgpgYGB7cn0KbXlfc2VxICUlIDIgPT0gMCAgICAgICAgICAgICAgICAjIHdoaWNoIHZhbHVlcyBpbiBteV9zZXEgYXJlIGV2ZW4/Cm15X2Jvb2xfdmVjID0gbXlfc2VxICUlIDIgPT0gMCAgIyBzdG9yZSB0aGUgQm9vbGVhbiB2ZWN0b3IKYGBgCgpUaGUgQm9vbGVhbiB2ZWN0b3IgY2FuIGJlIHVzZWQgdG8gc3Vic2V0IHRoZSBvcmlnaW5hbCB2ZWN0b3I6CgpgYGB7cn0KbXlfc2VxCm15X3NlcVtteV9ib29sX3ZlY10KYGBgCgojIyBNYXRyaXgKCkEgbWF0cml4IGhhcyB0d28gZGltZW5zaW9ucywgKnJvd3MqIGFuZCAqY29sdW1ucyouCgpgYGB7cn0KdmFscyA9IDE6OQp2YWxzCm1hdDEgPSBtYXRyaXgodmFscywgbnJvdyA9IDMsIGJ5cm93ID0gVFJVRSkKbWF0MQpgYGAKCmBgYHtyfQptYXQxWzEsM10gICMgaW5kZXggYnkgcm93IGFuZCBjb2x1bW4KYGBgCgpSIHN1cHBvcnRzIG1hdHJpeCBvcGVyYXRpb25zLiBGb3IgaW5zdGFuY2UsIG11bHRpcGx5aW5nIGEgdmVjdG9yIGJ5IGl0cyB0cmFuc3Bvc2UgY3JlYXRlcyBhIG1hdHJpeDoKCmBgYHtyfQpteV92ZWMgPSBjKDgsIDYsIDcsIDUsIDMsIDAsIDkpCm15X21hdCA9IG15X3ZlYyAlKiUgdChteV92ZWMpCm1vZGUobXlfbWF0KQpteV9tYXQKYGBgCgpNYXRyaWNlcyBhcmUgbm90IGxpbWl0ZWQgdG8gbnVtZXJpYyB2YWx1ZXMuIFlvdSBjYW4gbWFrZSBhIGNoYXJhY3RlciBtYXRyaXggKGlmIHRoZSBuZWVkIGFyaXNlcykuCgpgYGB7cn0KbWF0MiA9IG1hdHJpeChjKCdhJywnYicsJ2MnLCdkJyksIG5yb3c9MikKbWF0MgpgYGAKCiMjIFNpbmdsZSB0eXBlIHN1bW1hcnkKCi0gICBhIHN0YWNrIG9mIHZhbHVlcyAkXHJpZ2h0YXJyb3ckIHZlY3RvcgotICAgYSBzdGFjayBvZiB2ZWN0b3JzICRccmlnaHRhcnJvdyQgbWF0cml4Ci0gICBhIHN0YWNrIG9mIG1hdHJpY2VzICRccmlnaHRhcnJvdyQgYXJyYXkgKG11bHRpZGltZW5zaW9uYWwgYXJyYXkpCgpJbiBnZW5lcmFsIGFycmF5cyBhcmUgaGVscGZ1bCBmb3IgcHJvZ3JhbW1pbmcgUiBhbmQgbGVzcyBjb21tb25seSB1c2VkIGZvciBkYXRhIGFuYWx5c2lzLiAoWW91IG1pZ2h0IHJ1biBpbnRvIGFycmF5cyBmb3IgdGltZSBzZXJpZXMgYW5hbHlzaXMpLgoKIyBNaXhlZCB0eXBlIGNvbnRhaW5lcnMKCkxpc3RzIGFuZCBkYXRhLmZyYW1lcyBhcmUgZXh0cmVtZWx5IGNvbW1vbiBpbiBkYXRhIGFuYWx5c2lzLgoKIyMgTGlzdHMKCkxpc3RzIGFsbG93IG1peGVkIHR5cGVzIGFuZCBtaWdodCBob2xkIGRhdGEgdmFsdWVzIGFuZCBkYXRhIGNvbnRhaW5lcnMuIExpc3RzIGFyZSBjb21tb25seSB1c2VkIHRvIGhvbGQgdGhlIHJlc3VsdHMgb2YgYSBzdGF0aXN0aWNhbCBhbmFseXNpcy4gRm9yIGV4YW1wbGUsIGZpdHRpbmcgYSByZWdyZXNzaW9uIG1vZGVsIHJldHVybnMgYSBsaXN0LWxpa2UgbW9kZWwgb2JqZWN0LgoKT25lIHdheSB0byBjcmVhdGUgYSBsaXN0IGlzIHRvIHBhc3MgYSBzZXJpZXMgb2YgYXJndW1lbnRzIHRvIHRoZSBgbGlzdGAgZnVuY3Rpb246CgpgYGB7cn0KbXlfbGlzdCA9IGxpc3QoCiAgIkkgbGlrZSBSIiwKICBhcy5EYXRlKCIyMDIyLTA1LTE2IiksCiAgMjAsCiAgYyg4LCA2LCA3LCA1LCAzLCAwLCA5KSAgICNubyBjb21tYSBhZnRlciBsYXN0IGFyZyAoY2YgcHl0aG9uKQopCm15X2xpc3QKYGBgCgoqKkJlIHN1cmUgdG8gaW5zcGVjdCB0aGUgbGlzdCBvYmplY3QgaW4gdGhlIEVudmlyb25tZW50IHRhYiEqKgoKQWx0ZXJuYXRpdmVseToKCmBgYHtyfQpmb3IgKGVsZW0gaW4gbXlfbGlzdCkgeyAgICAjIGV4YW1wbGUgb2YgZmxvdy1jb250cm9sIAogIHByaW50KGNsYXNzKGVsZW0pKSAgICAgICAjIHNlZSB0aGUgRW52aXJvbm1lbnQgdGFiIGFzIHdlbGwKfQpgYGAKCllvdSBjYW4gYWNjZXNzIGxpc3QgaXRlbXMgYnkgcG9zaXRpb24gdXNpbmcgZG91YmxlIHNxdWFyZSBicmFja2V0czoKCmBgYHtyfQpteV9saXN0W1sxXV0gICAgICAgICAgIyBmaXJzdCBsaXN0IGl0ZW0KbXlfbGlzdFtbNF1dWzE6M10gICAgICMgZmlyc3QgMyBlbGVtZW50cyBvZiBmb3VydGggbGlzdCBpdGVtCmBgYAoKVGhhdCBpcyBiaXQgb2YgYSBtZXNzLCBzbyBjb25zaWRlciBuYW1pbmcgeW91ciBsaXN0IGVsZW1lbnRzIGZvciBlYXNpZXIgYWNjZXNzOgoKYGBge3J9Cm15X2xpc3QyID0gbGlzdCgKICBtZXNzYWdlID0gIkkgbGlrZSBSIiwKICB5ZXN0ZXJkYXkgPSAgYXMuRGF0ZSgiMjAyMi0wNS0xNiIpLAogIHdpZHRoID0gMjAsCiAgbXlfdmVjID0gYyg4LCA2LCA3LCA1LCAzLCAwLCA5KSAgI25vIGNvbW1hIGFmdGVyIGxhc3QgYXJnIChjZiBweXRob24pCikKbXlfbGlzdDIKYGBgCgoqKk5vdGUgaG93IHRoaXMgYXBwZWFycyBpbiB0aGUgRW52aXJvbm1lbnQgdGFiKioKCk5vdyB3ZSBjYW4gdXNlIHRoZSBuYW1lcyB0byBhY2Nlc3MgdGhlIGVsZW1lbnRzOgoKYGBge3J9Cm15X2xpc3QyJG1lc3NhZ2UgICAgICMgIm1lc3NhZ2UiIGVsZW1lbnQKbXlfbGlzdDIkbXlfdmVjWzE6M10gIyBmaXJzdCAzIGl0ZW1zIGZyb20gbXlfdmVjIGVsZW1lbnQKbmFtZXMobXlfbGlzdDIpCmBgYAoKTmFtaW5nIHRoZSBsaXN0IGl0ZW1zIGNyZWF0ZXMgYSBkYXRhIHN0cnVjdHVyZSBsaWtlIGEgaGFzaCB0YWJsZSBvciBQeXRob24gZGljdGlvbmFyeS4gTGlzdHMgd2l0aCBuYW1lZCBlbGVtZW50cyBhcmUgdXNlZCBmb3IgbW9kZWwgcmVzdWx0cyBhbmQgeW91IGNhbiBhY2Nlc3MgdGhlIHBhcnRpY3VsYXIgY29tcG9uZW50cyBieSBuYW1lIChlLmcuIG1vZGVsXCRyZXNpZHVhbHMpLgoKIyMgRGF0YSBGcmFtZXMKClRoZSBkYXRhLmZyYW1lIGZhbWlseSBvZiBkYXRhIHN0cnVjdHVyZXMgaXMgdGhlIGZhbWlsaWFyIGRhdGEgZm9ybWF0IHdpdGggcm93cyBhcyBjYXNlcyBhbmQgY29sdW1ucyBhcyB2YXJpYWJsZXMuIEl0IGlzIHRoZSBzYW1lIGtpbmQgb2YgZGF0YSB0aGF0IHdvdWxkIGJlIHN0b3JlZCBpbiBhbiBFeGNlbCBzcHJlYWRzaGVldCwgQ1NWIG9yIFBhbmRhcyBEYXRhRnJhbWUuCgpUaGUgYnVpbHQtaW4gZnJhbWUtbGlrZSBzdHJ1Y3R1cmUgaXMgZGF0YS5mcmFtZS4gVGhlcmUgYXJlIHR3byBjb21tb24gdmFyaWF0aW9ucyB5b3UgbWlnaHQgZW5jb3VudGVyIGluIGFkZC1vbiBwYWNrYWdlcy4KCjEuICBgZGF0YS50YWJsZWAgLSBhZGRzIGxhcmdlIGRhdGEgZmVhdHVyZXMgdG8gZGF0YS5mcmFtZQoyLiAgYHRpYmJsZWAgLSBmcmFtZS1saWtlIHdpdGggc3RyaWN0IGNoZWNraW5nIChsZXNzIGNvbnZlbmllbmNlIGZlYXR1cmVzLCBsaWtlIHBhcnRpYWwgbWF0Y2gpCgpUaGUgZGF0YS5mcmFtZXMgc3ludGF4IGlzIHNpbWlsYXIgdG8gdGhlIHN5bnRheCBmb3IgbGlzdHMsIGJ1dCBhbGwgdGhlIGVsZW1lbnRzIGFyZSB2ZWN0b3JzIChjb2x1bW5zKSBhbmQgbXVzdCBiZSBzYW1lIGxlbmd0aC4KClRoaXMgY2h1bmsgY3JlYXRlcyBhIGRhdGEuZnJhbWUgd2l0aCB0aHJlZSBjb2x1bW5zIChpZCwgYWdlLCBoZWlnaHQpOgoKYGBge3IgcGFnZWQucHJpbnQ9RkFMU0V9Cm15X2RmID0gZGF0YS5mcmFtZSgKICBpZCA9IDE6OSwKICBhZ2UgPSByb3VuZChydW5pZig5LCA4LCAxMikpLAogIGhlaWdodCA9IHJvdW5kKHJ1bmlmKDksIDM4LCA2MCksIDEpCikKbXlfZGYKYGBgCgoqKkNoZWNrIEVudmlyb25tZW50IHRhYiBhbmQgdXNlIHRoZSBwcmV2aWV3LioqCgpSb3dzIGFyZSBpbmRleGVkIGFuZCBjb2x1bW5zIGFyZSBuYW1lZCAoYW5kIGluZGV4ZWQpOgoKYGBge3IgcGFnZWQucHJpbnQ9RkFMU0V9Cm15X2RmWzEsXSAgICAjZmlyc3Qgcm93Cm15X2RmJGFnZSAgICAjY29sdW1uICJhZ2UiCmBgYAoKSnVzdCBkZWNsYXJlIG5ldyBjb2x1bW5zIHRvIGNyZWF0aW5nIHRoZW06CgpgYGB7cn0KbXlfZGYkZ3JhZGUgPSAiM3JkIiAgICMgc2luZ2xlIHZhbHVlIGJyb2FkY2FzdCB0byB3aG9sZSBjb2x1bW4KbXlfZGYKbXlfZGYkZ3JhZGVbNTo5XSA9ICI0dGgiICMgc2luZ2xlIHZhbHVlIGJyb2FkY2FzdCB0byBzdWJzZXQKbXlfZGYKYGBgCgpUaGVyZSBhcmUgbWFueSBmdW5jdGlvbnMgdGhhdCBvcGVyYXRlIG9uIGRhdGEuZnJhbWVzLiBGb3IgaW5zdGFuY2U6CgpgYGB7cn0Kc3VtbWFyeShteV9kZikKYGBgCgpUaGUgc3VtbWFyeSBmb3IgZ3JhZGUgaXMgZGlzYXBwb2ludGluZy4gV2Ugc2hvdWxkIG1ha2UgdGhpcyBhIGZhY3Rvciwgc28gaXQgaXMgdHJlYXRlZCBhcyBhIGNhdGVnb3JpY2FsIHZhcmlhYmxlLgoKYGBge3J9Cm15X2RmJGdyYWRlID0gYXMuZmFjdG9yKG15X2RmJGdyYWRlKQpzdW1tYXJ5KG15X2RmKQpgYGAKCk5vdyB0aGUgc3VtbWFyeSBpcyBtb3JlIHVzZWZ1bC4gRGF0YSB0eXBlcyBtYXR0ZXIhCgpBIGZldyBvdGhlciBmdW5jdGlvbnM6CgpgYGB7ciBwYWdlZC5wcmludD1GQUxTRX0KaGVhZChteV9kZikgICAgICMgc2hvdyB0aGUgZmlyc3QgNiByb3dzIG9mIHRoZSBkYXRhIGZyYW1lCiAgICAgICAgICAgICAgICAjIChnb29kIGZvciBsYXJnZSBkYXRhIGZyYW1lcykKbWVhbihteV9kZiRhZ2UpICMgY29tcHV0ZSBtZWFuIG9mIGEgY29sdW1uCnNkKG15X2RmJGFnZSkgICAjIGNvbXB1dGUgc3RhbmRhcmQgZGV2aWF0aW9uIG9mIGEgY29sdW1uCmBgYAoKIyBTdW1tYXJ5CgpJZiB5b3UgdW5kZXJzdGFuZCB0aGUgc2VtYW50aWNzIGZvciBmdW5jdGlvbnMsIGxpc3RzLCBkYXRhLmZyYW1lcyBhbmQgdmVjdG9ycywgeW91IHdpbGwgYmUgZXF1aXBwZWQgdG8gdW5kZXJzdGFuZCBtb3N0IG9mIHRoZSBleGFtcGxlcyB5b3UgZW5jb3VudGVyLiBVc2UgdGhlIGhlbHAgdGFiIHRvIGxvb2sgdXAgdGhlIGRvY3VtZW50YXRpb24gYW5kIGV4YW1wbGVzIGZvciBmdW5jdGlvbiBjYWxscy4K</div>
 
 
 

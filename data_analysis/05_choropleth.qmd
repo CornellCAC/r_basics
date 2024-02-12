@@ -1,0 +1,121 @@
+---
+title: "Choropleth maps in R"
+---
+
+## Choropleth maps with ggplot
+
+See more details at <https://ggplot2.tidyverse.org/reference/ggsf.html>
+
+### Social Vulnerability Index
+
+<https://www.atsdr.cdc.gov/placeandhealth/svi/index.html>
+
+> ATSDR's Geospatial Research, Analysis, & Services Program (GRASP) created the Centers for Disease Control and Prevention and Agency for Toxic Substances and Disease Registry Social Vulnerability Index (CDC/ATSDR SVI or simply SVI, hereafter) to help public health officials and emergency response planners identify and map the communities that will most likely need support before, during, and after a hazardous event.
+
+![List of SVI themes and variables](https://www.atsdr.cdc.gov/placeandhealth/svi/documentation/SVI-Variables.png?_=02699 "SVI Variables")
+
+-   **The overall summary ranking variable is RPL_THEMES**
+
+-   **Socioeconomic Status -- RPL_THEME1**
+
+-   **Household Characteristics -- RPL_THEME2**
+
+-   **Racial & Ethnic Minority Status -- RPL_THEME3**
+
+-   **Housing Type & Transportation -- RPL_THEME4**
+
+```{r}
+require(tictoc)
+require(dplyr)
+require(sf)
+require(ggplot2)
+```
+
+```{r}
+#| paged.print: FALSE
+sf::st_layers("SVI2020_US_county.gdb")
+
+```
+
+```{r}
+#| paged.print: FALSE
+svi_df = sf::st_read("SVI2020_US_county.gdb", layer="SVI2020_US_county")
+svi_df = svi_df %>% filter(!ST_ABBR %in% c('HI', 'AK'))
+#shape_df = sf::st_geometry(svi_df)
+```
+
+```{r}
+colnames(svi_df)
+```
+
+```{r}
+tic()
+plot_df = svi_df #%>% filter(F_TOTAL >= 0)
+gg = (
+  ggplot(data=plot_df, aes(fill=RPL_THEMES)) #RPL_THEMES #F_TOTAL
+  + geom_sf(size=.1, color=NA) #color=NA, "darkgrey")
+  + theme_bw()
+)
+gg
+toc()
+```
+
+```{r}
+tic()
+plot_df = svi_df %>% filter(ST_ABBR == "NY")
+gg = (
+  ggplot(data=plot_df, aes(fill=RPL_THEMES)) #RPL_THEMES #F_TOTAL
+  + geom_sf(size=0, color="darkgrey")
+  + scale_fill_continuous(name="National Rank", type = "viridis")
+  + ggtitle("Relative Social Vulnerabilty")
+  + theme_void()
+)
+gg
+toc()
+```
+
+## Plotly
+
+Basic example from Plotly documentation at <https://plotly.com/r/choropleth-maps/>
+
+```{r}
+require(plotly)
+require(rjson)
+```
+
+```{r}
+url <- 'https://raw.githubusercontent.com/plotly/datasets/master/geojson-counties-fips.json'
+counties <- rjson::fromJSON(file=url)
+url2<- "https://raw.githubusercontent.com/plotly/datasets/master/fips-unemp-16.csv"
+df <- read.csv(url2, colClasses=c(fips="character"))
+g <- list(
+  scope = 'usa',
+  projection = list(type = 'albers usa'),
+  showlakes = TRUE,
+  lakecolor = toRGB('white')
+)
+fig <- plot_ly()
+fig <- fig %>% add_trace(
+    type="choropleth",
+    geojson=counties,
+    locations=df$fips,
+    z=df$unemp,
+    colorscale="Viridis",
+    zmin=0,
+    zmax=12,
+    marker=list(line=list(
+      width=0)
+    )
+  )
+fig <- fig %>% colorbar(title = "Unemployment Rate (%)")
+fig <- fig %>% layout(
+    title = "2016 US Unemployment by County"
+)
+
+fig <- fig %>% layout(
+    geo = g
+  )
+
+fig
+
+```

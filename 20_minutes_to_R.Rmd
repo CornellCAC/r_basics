@@ -32,30 +32,22 @@ But did you know that you can also use R Markdown's markdown to make
 -   LaTeX equations, $E = mc^{2}$
 -   And bibliographies [@rmarkdown15].
 
-> ``` {=}
-> Markdown provides an easy way to make standard types of formatted text, like
+> \`\`\` {=} Markdown provides an easy way to make standard types of formatted text, like
 >
-> - *italics*
-> - **bold**
-> - `code`
-> - [links](rmarkdown.rstudio.com)
-> - etc.
+> -   *italics*
+> -   **bold**
+> -   `code`
+> -   [links](rmarkdown.rstudio.com)
+> -   etc.
 >
 > But did you know that you can also use R Markdown's markdown to make
 >
-> - LaTeX equations, $E = mc^{2}$
-> - And bibliographies [@rmarkdown15].
-> ```
+> -   LaTeX equations, $E = mc^{2}$
+> -   And bibliographies [@rmarkdown15]. \`\`\`
 
 Markdown also supports a hierarchy of headings to organize your document. The **Outline** to the right is generated automatically by the headings in the document. **In markdown documents, `#` is for headings, not comments!**
 
-``` {=}
-# H1 heading (top level header)
-## H2
-### H3
-...
-###### H6 (deepest level header)
-```
+`{=} # H1 heading (top level header) ## H2 ### H3 ... ###### H6 (deepest level header)`
 
 ## R Notebook Gotchas:
 
@@ -223,26 +215,28 @@ It is important to make sure that your data is represented by the correct R data
 
 **Most common data types**
 
-+--------------+------------------------------------------------------+
-| Type         | Description                                          |
-+=============:+======================================================+
-| numeric      | 3, 5.2, etc                                          |
-+--------------+------------------------------------------------------+
-| Boolean      | TRUE, FALSE                                          |
-+--------------+------------------------------------------------------+
-| character    | (i.e. string) "cat", "dog"                           |
-+--------------+------------------------------------------------------+
-| factor       | categorical variable -\                              |
-|              | data value is one of a small set of possible values. |
-+--------------+------------------------------------------------------+
-| date[time]   | represents a date or specific date and time.         |
-+--------------+------------------------------------------------------+
++------------+------------------------------------------------------+
+| Type       | Description                                          |
++===========:+======================================================+
+| numeric    | 3, 5.2, etc                                          |
++------------+------------------------------------------------------+
+| Boolean    | TRUE, FALSE                                          |
++------------+------------------------------------------------------+
+| character  | (i.e. string) "cat", "dog"                           |
++------------+------------------------------------------------------+
+| factor     | categorical variable -\                              |
+|            | data value is one of a small set of possible values. |
++------------+------------------------------------------------------+
+| date[time] | represents a date or specific date and time.         |
++------------+------------------------------------------------------+
 
-    5           # numeric
-    TRUE        # Boolean / Logical 
+```         
+5           # numeric
+TRUE        # Boolean / Logical 
 
-    "I like R"  # character(s) / string
-    'I like R'  # single or double quotes
+"I like R"  # character(s) / string
+'I like R'  # single or double quotes
+```
 
 Data type determines what you can do with the data:
 
