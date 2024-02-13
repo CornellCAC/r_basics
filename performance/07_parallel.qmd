@@ -1,0 +1,86 @@
+---
+title: "07_parallelization"
+format: html
+editor: visual
+---
+
+## Parallelization
+
+Since about 2020, the `parallel` package has been part of the base R distribution. It offers a cross-platform solution to parallelizing R code. Note: Security policies that block ports from communicating with one another can prevent parallel from working.
+
+```{r}
+require(doParallel)
+require(parallel)
+require(lme4)
+require(tictoc)
+
+num_cores = detectCores(logical = TRUE)
+
+# Make sure to use a random number generator 
+# that is shared among workers
+RNGkind("L'Ecuyer-CMRG")
+set.seed(1)
+
+
+```
+
+```{r}
+tic("parallel")
+
+#Parallel Function
+par_function<- function(...) {
+  # also require() any needed libraries here
+  # note that "full_data" exists in global env
+  idx = sample(1:nrow(full_data), replace = TRUE)
+  bs_data = full_data[idx, ]
+  model_fit <- lm(formula=mpg~wt+disp, data=bs_data)
+  return(summary(model_fit)$r.square)
+}
+
+
+
+# Sim values
+ntrials <- 1000 #10000
+
+full_data = mtcars
+
+# Multithreaded run
+
+## Make the cluster. Use num_cores-1 if less than ~32 cores
+cl = makeCluster(num_cores-1)  
+registerDoParallel(cl) 
+
+##seq_id is just an int representing index but it could also be a value used by the function
+seq_id_all<- seq_along(1:ntrials)  
+
+
+## export these variables to each member in the cluster
+clusterExport(cl,list('par_function','full_data'))
+
+## Parallel Sapply distributes the items in seq_id_all among the cluster members
+## Each cluster member applies par_function to each of the items it is allocated
+## The par_function return value is sent back to the main process.
+## The list called res_par holds the combined results. 
+## TicToc reports time elapsed.
+res_par = parSapply(cl, seq_id_all, par_function )
+
+stopCluster(cl)
+
+summary(res_par)
+toc()
+```
+
+```{r}
+
+# For comparison, a single threaded run
+
+tic()
+res_sc = vector(mode="double", length=ntrials)
+for (i in seq_along(1:ntrials-1)) {
+  #print(paste(c("Trial num:", i)))
+  res_sc[i] = par_function()
+}
+summary(res_par)
+toc()
+
+```
